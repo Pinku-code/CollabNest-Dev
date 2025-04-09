@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -12,22 +13,23 @@ const Navbar = () => {
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-              <li><a>Home</a></li>
+              <li><Link to="/">Home</Link></li>
               <li>
                 <a>Parent</a>
-                <ul className="p-2">
+                <ul className="p-2 m-2">
                   <li><a>Submenu 1</a></li>
                   <li><a>Submenu 2</a></li>
                 </ul>
               </li>
-              <li><a>Services</a></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/plans">Plans</Link></li>
             </ul>
           </div>
           <a className="btn btn-soft btn-primary text-xl rounded-full">CollabNest</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><a>Home</a></li>
+            <li><Link to="/">Home</Link></li>
             <li>
               <details>
                 <summary>Parent</summary>
@@ -37,12 +39,23 @@ const Navbar = () => {
                 </ul>
               </details>
             </li>
-            <li><a>Services</a></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/plans">Plans</Link></li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div>
+        {/* <div className="navbar-end">
+          <a className="btn rounded-full">Auth</a>
+        </div> */}
+        <ul className="navbar-end menu menu-horizontal px-1">
+          <li>
+            <details>
+              <summary>Auth</summary>
+              <ul className="p-2">
+                <li><Link to="/login">Login</Link></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
       </div>
     </div>
   )
