@@ -2,13 +2,14 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import HeroImg from '../assets/Hero.jpg'
 import Footer from '../components/Footer'
+import Facilities from '../pages/Facilities'
 
 const Home = () => {
     return (
         <>
             <Navbar />
 
-            <section className="bg-base-100 text-base-content py-20 px-6 lg:px-20">
+            <section className="bg-base-100 text-base-content py-20 px-6 lg:px-20 mb-2">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Text Content */}
                     <div className="space-y-8">
@@ -100,6 +101,8 @@ const Home = () => {
 
                 </div>
             </div> */}
+
+            <Facilities />
 
             <div className="flex items-center justify-center min-h-screen bg-base-200">
                 <div className="join join-vertical bg-base-100 shadow-lg p-4 rounded-lg w-full max-w-md">
