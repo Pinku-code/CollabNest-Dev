@@ -10,8 +10,8 @@ const Services = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content text-center">
             <div className="max-w-md">
-                <h1 className="text-5xl font-bold">Our Services</h1>
-                <p className="py-6">We offer a range of services to help you achieve your goals.</p>
+                <h1 className="text-5xl font-bold">Our Docs</h1>
+                <p className="py-6">we Offer Documentation for our site for better convenience.</p>
                 <button className="btn btn-primary">Get Started</button>
             </div>
             </div>

@@ -21,7 +21,7 @@ const Navbar = () => {
                   <li><a>Submenu 2</a></li>
                 </ul>
               </li>
-              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/docs">Docs</Link></li>
               <li><Link to="/plans">Plans</Link></li>
             </ul>
           </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
                 </ul>
               </details>
             </li>
-            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/docs">Docs</Link></li>
             <li><Link to="/plans">Plans</Link></li>
           </ul>
         </div>
@@ -51,7 +51,8 @@ const Navbar = () => {
             <details>
               <summary>Auth</summary>
               <ul className="p-2">
-                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/login">Creator</Link></li>
+                <li><Link to="/login">Sponsor</Link></li>
               </ul>
             </details>
           </li>
