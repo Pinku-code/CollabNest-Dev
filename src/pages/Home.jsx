@@ -72,10 +72,12 @@ const Home = () => {
             </section>
 
 
+
             {/* <div className="flex items-center justify-center min-h-screen bg-base-200">
                 <div className="join join-vertical bg-base-100 shadow-lg p-4 rounded-lg w-full max-w-md">
+
                     <div className="collapse collapse-arrow join-item border border-base-300">
-                        <input type="radio" name="my-accordion-4" defaultChecked />
+                        <input type="checkbox" />
                         <div className="collapse-title font-semibold">
                             How do I create an account?
                         </div>
@@ -85,7 +87,7 @@ const Home = () => {
                     </div>
 
                     <div className="collapse collapse-arrow join-item border border-base-300">
-                        <input type="radio" name="my-accordion-4" />
+                        <input type="checkbox" />
                         <div className="collapse-title font-semibold">
                             I forgot my password. What should I do?
                         </div>
@@ -95,7 +97,7 @@ const Home = () => {
                     </div>
 
                     <div className="collapse collapse-arrow join-item border border-base-300">
-                        <input type="radio" name="my-accordion-4" />
+                        <input type="checkbox" />
                         <div className="collapse-title font-semibold">
                             How do I update my profile information?
                         </div>
@@ -103,11 +105,14 @@ const Home = () => {
                             Go to "My Account" settings and select "Edit Profile" to make changes.
                         </div>
                     </div>
+
                 </div>
             </div> */}
 
             <div className="flex items-center justify-center min-h-screen bg-base-200">
                 <div className="join join-vertical bg-base-100 shadow-lg p-4 rounded-lg w-full max-w-md">
+
+                    <h2 className="text-2xl font-bold text-center mb-4">FAQs</h2>
 
                     <div className="collapse collapse-arrow join-item border border-base-300">
                         <input type="checkbox" />
@@ -141,6 +146,7 @@ const Home = () => {
 
                 </div>
             </div>
+
 
 
 
