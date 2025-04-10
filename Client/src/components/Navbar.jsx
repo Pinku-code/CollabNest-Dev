@@ -22,7 +22,7 @@ const Navbar = () => {
                 </ul>
               </li> */}
               <li><Link to="/docs">Docs</Link></li>
-              <li><Link to="/plans">Plans</Link></li>
+              <li><Link to="/plans">Plan</Link></li>
             </ul>
           </div>
           <a className="btn btn-soft btn-primary text-xl rounded-full"href='/'>CollabNest</a>
@@ -40,7 +40,7 @@ const Navbar = () => {
               </details>
             </li> */}
             <li><Link to="/docs">Docs</Link></li>
-            <li><Link to="/plans">Plans</Link></li>
+            <li><Link to="/plans">Plan</Link></li>
           </ul>
         </div>
         {/* <div className="navbar-end">
