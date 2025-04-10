@@ -33,7 +33,7 @@ const Home = () => {
                             Organize Your <span className="text-primary">Creative Empire</span><br />
                             in One Place
                         </h1>
-                        <p className="text-lg leading-relaxed text-neutral-content">
+                        <p className="text-lg leading-relaxed text-gray-800 dark:text-white">
                             CollabNest is your all-in-one content management workspace —
                             plan videos, track collaborations, manage brand deals, and
                             spark fresh ideas with AI. Built for YouTubers, Streamers,
