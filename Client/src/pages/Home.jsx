@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import HeroImg from '../assets/Hero.jpg'
 import Footer from '../components/Footer'
+import Facilities from '../pages/Facilities'
 
 const Home = () => {
     return (
@@ -100,6 +101,8 @@ const Home = () => {
 
                 </div>
             </div> */}
+
+            <Facilities />
 
             <div className="flex items-center justify-center min-h-screen bg-base-200">
                 <div className="join join-vertical bg-base-100 shadow-lg p-4 rounded-lg w-full max-w-md">
