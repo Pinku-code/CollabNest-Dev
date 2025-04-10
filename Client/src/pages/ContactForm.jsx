@@ -100,13 +100,13 @@ const ContactForm = () => {
 
           {/* Map Box */}
           <div className="min-h-screen flex items-center justify-center ">
-            <div className="card w-full max-w-sm shadow-2xl bg-base-100 ">
+            <div className="card w-full max-w-lg shadow-2xl bg-base-100 ">
               <div className="card-body">
                 <iframe
                   title="Google Map"
                   width="100%"
                   height="100%"
-                  style={{ minWidth: "300px", border: 0 }}
+                  style={{ minHeight: "400px", border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
