@@ -37,8 +37,8 @@ Creators often juggle multiple apps—Notion, Google Docs, Excel—for scripts, 
 
 | Frontend   | Backend     | Database | AI/ML     | Hosting   |
 |------------|-------------|----------|-----------|-----------|
-| React.js   | Node.js     | MongoDB  | OpenAI/Gemini | Vercel/Render |
-| TailwindCSS| Express.js  | Redis    | -         | -         |
+| React.js   | Python      | SQL      | OpenAI/Gemini | Vercel/Render |
+| TailwindCSS| Django      | Redis    | -         | -         |
 
 ---
 
