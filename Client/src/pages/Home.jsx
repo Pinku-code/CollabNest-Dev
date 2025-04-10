@@ -9,7 +9,7 @@ const Home = () => {
         <>
             <Navbar />
 
-            <section className="bg-base-100 text-base-content py-20 px-6 lg:px-20">
+            <section className="bg-base-100 text-base-content py-20 px-6 lg:px-20 mb-2">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Text Content */}
                     <div className="space-y-8">
