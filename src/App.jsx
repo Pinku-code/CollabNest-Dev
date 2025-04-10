@@ -6,7 +6,7 @@ import Plans from './pages/Plans';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import ContactForm from './components/ContactForm';
+import ContactForm from './pages/ContactForm';
 function App() {
   return (
     <Router>
