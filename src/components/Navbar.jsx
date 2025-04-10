@@ -25,7 +25,7 @@ const Navbar = () => {
               <li><Link to="/plans">Plans</Link></li>
             </ul>
           </div>
-          <a className="btn btn-soft btn-primary text-xl rounded-full">CollabNest</a>
+          <a className="btn btn-soft btn-primary text-xl rounded-full"href='/'>CollabNest</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

@@ -3,7 +3,7 @@
 **CollabNest** is a modern SaaS platform tailored for content creators—YouTubers, TikTokers, streamers, and podcasters. It combines content planning, brand management, and AI-powered ideation into one streamlined workspace.
 ---
 
-## 🚀 Features
+## 🚀 Feature
 
 - ✍️ **Script Bank**  
   Organize scripts with status (Draft, Scheduled, Published), versioning, and search.

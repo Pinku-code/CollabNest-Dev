@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
         <div>
@@ -7,7 +7,7 @@ const Footer = () => {
                 <nav className="grid grid-flow-col gap-4">
                     <a className="link link-hover">About</a>
                     <a className="link link-hover">Services</a>
-                    <a className="link link-hover">Contact Us</a>
+                    <a className="link link-hover"><Link to={"/contact"}>Contact Us</Link></a>
                     {/* <a className="link link-hover">Press kit</a> */}
                 </nav>
                 <nav>
