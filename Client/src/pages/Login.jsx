@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const Login = () => {
   return (
     <div>
+      <Navbar />
       <div className="min-h-screen flex items-center justify-center bg-base-200">
         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
@@ -51,6 +54,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer />
 
     </div>
   )
