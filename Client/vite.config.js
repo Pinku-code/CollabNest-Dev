@@ -8,4 +8,7 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
+  daisyui: {
+    themes: ["light", "dark"], // or add more custom themes
+  },
 })

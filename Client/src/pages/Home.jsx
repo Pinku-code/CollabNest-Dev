@@ -139,6 +139,16 @@ const Home = () => {
                         </div>
                     </div>
 
+                    <div className="collapse collapse-arrow join-item border border-base-300">
+                        <input type="checkbox" />
+                        <div className="collapse-title font-semibold">
+                            Customer Care ? How do I contact?
+                        </div>
+                        <div className="collapse-content text-sm">
+                            Go to "Menu" and select "Help" to make changes.
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
