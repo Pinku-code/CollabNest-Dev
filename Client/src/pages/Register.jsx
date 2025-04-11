@@ -72,13 +72,13 @@ const Register = () => {
               </div>
 
               <div className="form-control mt-4">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-primary w-full">Register</button>
               </div>
 
               <div className="divider">OR</div>
 
               <div className="form-control">
-                <button className="btn btn-outline btn-primary">
+                <button className="btn btn-outline btn-primary w-full">
                   Continue with Google
                 </button>
               </div>
