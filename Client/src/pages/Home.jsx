@@ -110,7 +110,7 @@ const Home = () => {
             
             {/* Left - Image */}
             <div className="w-full max-w-md">
-                <img src={SocialImage} alt="FAQ Illustration" className="rounded-lg shadow-lg w-full h-auto object-cover" />
+                <img src={SocialImage} alt="FAQ Illustration" className="h-auto object-cover" />
             </div>
 
             {/* Right - FAQ */}
