@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ContactForm from './pages/ContactForm';
+import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
     <Router>
@@ -16,8 +17,15 @@ function App() {
         <Route path='/plans' element={<Plans />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/contact' element={<ContactForm/>}/>
+        <Route path='/contact' element={<ContactForm />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
