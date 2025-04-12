@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ContactForm from './pages/ContactForm';
 import PrivateRoute from './components/PrivateRoute';
+
 function App() {
   return (
     <Router>
