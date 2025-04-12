@@ -88,7 +88,7 @@ const Plans = () => {
                     <div className="card-body">
                         <div className="flex justify-between">
                             <h2 className="text-xl font-bold">Basic</h2>
-                            <span className="text-lg">$9/mo</span>
+                            <span className="text-lg">₹299/mo</span>
                         </div>
                         <ul className="mt-4 flex flex-col gap-2 text-sm">
                             <li>✔️ Low-res image generation</li>
@@ -106,7 +106,7 @@ const Plans = () => {
                         <span className="badge badge-warning self-start">Most Popular</span>
                         <div className="flex justify-between">
                             <h2 className="text-xl font-bold">Standard</h2>
-                            <span className="text-lg">$19/mo</span>
+                            <span className="text-lg">₹399/mo</span>
                         </div>
                         <ul className="mt-4 flex flex-col gap-2 text-sm">
                             <li>✔️ High-res image generation</li>
@@ -123,7 +123,7 @@ const Plans = () => {
                     <div className="card-body">
                         <div className="flex justify-between">
                             <h2 className="text-xl font-bold">Premium</h2>
-                            <span className="text-lg">$29/mo</span>
+                            <span className="text-lg">₹499/mo</span>
                         </div>
                         <ul className="mt-4 flex flex-col gap-2 text-sm">
                             <li>✔️ AI-driven image enhancements</li>

@@ -1,8 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import HeroImg from '../assets/Hero.jpg'
+import HeroImg from '../assets/hero.png'
 import Footer from '../components/Footer'
-import Facilities from '../pages/Facilities'
+import Facilities from '../components/Facilities'
 import { Link } from 'react-router-dom'
 import SocialImage from '../assets/social.png'
 
@@ -11,7 +11,7 @@ const Home = () => {
         <>
             <Navbar />
 
-            <section className="bg-base-100 text-base-content py-20 px-6 lg:px-20 mb-2">
+            <section className="bg-base-100 text-base-content py-20 px-6 mt-10 lg:px-20 mb-2">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Text Content */}
                     <div className="space-y-8">
@@ -53,7 +53,7 @@ const Home = () => {
                         <img
                             src={HeroImg}
                             alt="CollabNest Hero"
-                            className="max-w-full w-[500px] rounded-3xl shadow-2xl"
+                            className="max-w-full w-[500px] rounded-3xl"
                         />
                     </div>
                 </div>
@@ -61,48 +61,6 @@ const Home = () => {
 
 
 
-
-
-
-
-
-
-
-            {/* <div className="flex items-center justify-center min-h-screen bg-base-200">
-                <div className="join join-vertical bg-base-100 shadow-lg p-4 rounded-lg w-full max-w-md">
-
-                    <div className="collapse collapse-arrow join-item border border-base-300">
-                        <input type="checkbox" />
-                        <div className="collapse-title font-semibold">
-                            How do I create an account?
-                        </div>
-                        <div className="collapse-content text-sm">
-                            Click the "Sign Up" button in the top right corner and follow the registration process.
-                        </div>
-                    </div>
-
-                    <div className="collapse collapse-arrow join-item border border-base-300">
-                        <input type="checkbox" />
-                        <div className="collapse-title font-semibold">
-                            I forgot my password. What should I do?
-                        </div>
-                        <div className="collapse-content text-sm">
-                            Click on "Forgot Password" on the login page and follow the instructions sent to your email.
-                        </div>
-                    </div>
-
-                    <div className="collapse collapse-arrow join-item border border-base-300">
-                        <input type="checkbox" />
-                        <div className="collapse-title font-semibold">
-                            How do I update my profile information?
-                        </div>
-                        <div className="collapse-content text-sm">
-                            Go to "My Account" settings and select "Edit Profile" to make changes.
-                        </div>
-                    </div>
-
-                </div>
-            </div> */}
 
             <Facilities />
 
@@ -158,10 +116,6 @@ const Home = () => {
                 </div>
             </div>
         </div>
-
-
-
-
             <Footer />
         </>
     )
