@@ -198,13 +198,13 @@ const Navbar = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/docs">Docs</Link></li>
             <li><Link to="/plans">Plans</Link></li>
-            <li>
+            {/* <li>
               <input
                 type="text"
                 placeholder="Search..."
                 className="input input-bordered w-full"
               />
-            </li>
+            </li> */}
           </ul>
         </div>
         <Link to="/" className="btn btn-soft btn-primary text-xl font-bold normal-case  rounded-full">
@@ -232,8 +232,8 @@ const Navbar = () => {
             <Link
               to="/docs"
               className={`px-3 py-2 rounded-full font-medium transition duration-200 ${isActive("/docs")
-                  ? "bg-primary text-white"
-                  : "hover:bg-primary hover:text-white"
+                ? "bg-primary text-white"
+                : "hover:bg-primary hover:text-white"
                 }`}
             >
               Docs
@@ -244,8 +244,8 @@ const Navbar = () => {
             <Link
               to="/plans"
               className={`px-3 py-2 rounded-full font-medium transition duration-200 ${isActive("/plans")
-                  ? "bg-primary text-white"
-                  : "hover:bg-primary hover:text-white"
+                ? "bg-primary text-white"
+                : "hover:bg-primary hover:text-white"
                 }`}
             >
               Plans
@@ -255,13 +255,13 @@ const Navbar = () => {
         </ul>
 
         {/* Search Bar */}
-        <div className="ml-6">
+        {/* <div className="ml-6">
           <input
             type="text"
             placeholder="Search..."
           className="input input-bordered w-64 md:w-80 rounded-full border-gray-300 dark:border-gray-700 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* End */}
@@ -299,14 +299,16 @@ const Navbar = () => {
 
         {/* Auth Dropdown */}
         <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost rounded-full">
-            Auth
-          </label>
-          <ul
+          <Link to="/login">
+            <label tabIndex={0} className="btn btn-ghost rounded-full">
+              Auth
+            </label>
+          </Link>
+          {/* <ul
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40">
             <li><Link to="/login">Login</Link></li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>
