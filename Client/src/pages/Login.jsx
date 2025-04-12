@@ -90,6 +90,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -113,10 +115,10 @@ const Login = () => {
       // Save token (optional: use cookies or context for security)
       localStorage.setItem("token", res.data.token);
 
-      alert("Login successful!");
+      toast.success("Login successful!");
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      toast.error(err.response?.data?.message || "Login failed");
     }
   };
 

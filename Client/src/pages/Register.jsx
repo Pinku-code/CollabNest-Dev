@@ -126,6 +126,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from "axios";
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -137,8 +138,6 @@ const Register = () => {
     terms: false
   });
 
-  const [error, setError] = useState('');
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
@@ -148,11 +147,11 @@ const Register = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      return setError("Passwords do not match.");
+      return toast.error("Passwords do not match.");
     }
 
     if (!formData.terms) {
-      return setError("You must agree to the terms.");
+      return toast.error("You must agree to the terms.");
     }
 
     try {
@@ -162,10 +161,10 @@ const Register = () => {
         password: formData.password
       });
 
-      alert(res.data.message);
+      toast.success(res.data.message || "Registration successful!");
       navigate('/login');
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed");
+      toast.error(err.response?.data?.message || "Registration failed");
     }
   };
 
@@ -176,8 +175,6 @@ const Register = () => {
         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
             <h2 className="text-2xl font-bold text-center">Create an Account 📝</h2>
-
-            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
             <form onSubmit={handleSubmit}>
               <div className="form-control">

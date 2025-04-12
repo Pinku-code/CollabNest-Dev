@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import HeroImg from '../assets/Hero.jpg'
 import Footer from '../components/Footer'
 import Facilities from '../pages/Facilities'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     return (
@@ -115,7 +116,7 @@ const Home = () => {
                             How do I create an account?
                         </div>
                         <div className="collapse-content text-sm">
-                            Click the "Sign Up" button in the top right corner and follow the registration process.
+                            Click the "<Link to={"/register"} className='text-violet-300 hover:text-violet-500 '>Sign Up</Link>" button in the top right corner and follow the registration process.
                         </div>
                     </div>
 
