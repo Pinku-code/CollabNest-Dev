@@ -8,10 +8,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ContactForm from './pages/ContactForm';
 import PrivateRoute from './components/PrivateRoute';
-<<<<<<< HEAD
-=======
 import { Toaster } from 'react-hot-toast';
->>>>>>> 3aabd3bc30671576dc3816f8309d5eb541386722
 
 function App() {
   return (
