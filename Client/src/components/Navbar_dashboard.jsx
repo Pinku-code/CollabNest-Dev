@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Navbar_dashboard = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -27,6 +28,56 @@ useEffect(() => {
   window.addEventListener("scroll", handleScroll);
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
+
+
+const [creatorInfo, setCreatorInfo] = useState({
+    name: "",
+    email: "",
+    niche: "",
+  });
+const navigate = useNavigate();
+
+useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("You must be logged in");
+      navigate("/login");
+      return;
+    }
+
+    console.log("Fetch Dashboard above");
+
+    const fetchdata = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/cr_dash", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.table(res);
+        if (!res.ok) {
+          throw new Error("Failed to fetch dashboard data");
+        }
+
+        console.table(res);
+
+        const data = await res.json();
+
+        if (data.creatorInfo) {
+          setCreatorInfo(data.creatorInfo);
+        }
+
+
+      } catch (error) {
+        console.error(error);
+        toast.error("Error loading dashboard");
+      }
+    };
+
+    fetchdata();
+  }, [navigate]);
+
+  console.log(creatorInfo.name);
 
   return (
     <motion.nav
@@ -158,7 +209,7 @@ useEffect(() => {
       className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
     >
       <li>
-        <span className="font-semibold">👋 Hello, Creator</span>
+        <span className="font-semibold">👋 Hello, {creatorInfo.name.split(" ")[0]}</span>
       </li>
       <li>
         <Link to="/profile">Profile</Link>
