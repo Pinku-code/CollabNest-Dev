@@ -116,7 +116,7 @@ const Login = () => {
       localStorage.setItem("token", res.data.token);
 
       toast.success("Login successful!");
-      navigate('/dashboard');
+      navigate('/cr_dash'); // Redirect to dashboard
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed");
     }
@@ -128,7 +128,7 @@ const Login = () => {
       <div className="min-h-screen flex items-center justify-center bg-base-200">
         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
-            <h2 className="text-2xl font-bold text-center">Welcome Back 👋</h2>
+            <h2 className="text-2xl font-bold text-center">Welcome 👋</h2>
 
             {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 

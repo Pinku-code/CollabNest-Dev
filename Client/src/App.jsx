@@ -11,6 +11,8 @@ import Dashboard from "./pages/CreatorsDashboard/Dashboard";
 import Scripts from "./pages/CreatorsDashboard/Scripts";
 import Collabs from "./pages/CreatorsDashboard/Collabs";
 import Video_manager from "./pages/CreatorsDashboard/Video_manger";
+
+
 function App() {
   return (
     <div>
@@ -26,7 +28,7 @@ function App() {
           <Route path="/cr_dash/Scripts" element={<Scripts />} />
           <Route path="/cr_dash/Collabs" element={<Collabs />} />
           <Route path="/cr_dash/Video_manager" element={<Video_manager />} />
-          
+          {/* <Route path="*" element={<Home />} /> */}
 
         </Routes>
       </Router>
