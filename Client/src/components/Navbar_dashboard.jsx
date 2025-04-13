@@ -68,7 +68,7 @@ useEffect(() => {
             </ul>
           </div>
           <Link
-            to="/"
+            to="/cr_dash"
             className="btn btn-soft btn-primary text-xl font-bold normal-case rounded-full"
           >
             CollabNest
