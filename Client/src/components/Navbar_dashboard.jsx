@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import avatar from "../assets/avatar.png";
 
 const Navbar_dashboard = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -201,7 +202,7 @@ useEffect(() => {
   <div className="dropdown dropdown-end">
     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
       <div className="w-10 rounded-full">
-        <img src="/avatar-placeholder.png" alt="User avatar" />
+        <img src={avatar} alt="User avatar" />
       </div>
     </label>
     <ul
