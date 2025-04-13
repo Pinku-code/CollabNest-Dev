@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion"; 
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -17,6 +18,14 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
+    <motion.nav
+    initial={{ y: -100, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 1.0, ease: "easeOut" }}
+    className="navbar"
+  >
+    {/* Navbar content */}
+  
     <div className="navbar fixed top-4 left-1/2 -translate-x-1/2 z-10 bg-base-100 shadow-lg px-4 py-2 rounded-full max-w-7xl w-full">
       {/* Start */}
       <div className="navbar-start">
@@ -107,6 +116,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+    </motion.nav>
   );
 };
 
