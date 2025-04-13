@@ -8,6 +8,7 @@ import SocialImage from "../assets/social.png";
 import { motion } from "framer-motion";
 import Creator from "../assets/Creator-Onboard-StatCard.png";
 import Collab from "../assets/Successfull-Collaboration.png";
+import Brand from "../assets/Brand-Deal.png";
 
 const Home = () => {
   const cards = [
@@ -22,7 +23,7 @@ const Home = () => {
       text: "2,500+ collabs completed,Connecting creators with the right partners seamlessly.",
     },
     {
-      img: "https://via.placeholder.com/300x200",
+      img: Brand,
       title: "🎯 Brand Deals Tracked",
       text: "1,200+ brand deals managed. Empowering creators to focus on content, not paperwork.",
     },
