@@ -98,7 +98,7 @@ const Home = () => {
             transition={{ duration: 1.0, ease: "easeOut" }}
             className="hero"
           >
-            <div className="hero flex justify-center">
+            <div className="hero flex justify-center drop-shadow-2xl ">
               <img
                 src={HeroImg}
                 alt="CollabNest Hero"
@@ -110,16 +110,16 @@ const Home = () => {
       </section>
 
       <section className="stat_card py-10 px-6 bg-base-100">
-        <h1 className="text-3xl md:text-4xl font-bold text-center pt-4 pb-4 tracking-wide">
+        <h1 className="text-primary mb-12 text-3xl md:text-4xl font-bold text-center pt-4 pb-4 tracking-wide">
           What we do?
-          <div className="w-54 h-1 bg-blue-500 mx-auto rounded-full mb-8"></div>
+          {/* <div className="w-54 h-1 bg-primary mx-auto rounded-full mb-8"></div> */}
         </h1>
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 ">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="rounded-2xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+              className="rounded-2xl shadow-md shadow-indigo-500 overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
             >
               <img
                 src={card.img}
@@ -130,7 +130,7 @@ const Home = () => {
                 <h3 className="text-xl font-bold mb-2 text-neon-600 tracking-wide">
                   {card.title}
                 </h3>
-                <p className="text-gray-700 text-base leading-relaxed">
+                <p className="text-gray-400 text-base leading-relaxed">
                   {card.text}
                 </p>
               </div>
@@ -143,7 +143,7 @@ const Home = () => {
 
       <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-base-200 gap-8 p-4">
         {/* Left - Image */}
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-md drop-shadow-2xl">
           <img
             src={SocialImage}
             alt="FAQ Illustration"
@@ -164,7 +164,7 @@ const Home = () => {
               Click the "
               <Link
                 to={"/register"}
-                className="text-violet-300 hover:text-violet-500"
+                className="text-primary hover:text-violet-500"
               >
                 Sign Up
               </Link>
