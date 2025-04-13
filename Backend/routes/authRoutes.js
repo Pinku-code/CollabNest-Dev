@@ -8,7 +8,7 @@ router.post('/login', login);
 router.post('/logout', logout);
 
 // Protected dashboard route
-router.get('/dashboard', protect, (req, res) => {
+router.get('/cr_dash', protect, (req, res) => {
   res.status(200).json({
     message: `Welcome, user ${req.user.userId}!`,
     data: {
