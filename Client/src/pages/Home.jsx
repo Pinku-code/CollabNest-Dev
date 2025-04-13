@@ -6,22 +6,40 @@ import Facilities from "../components/Facilities";
 import { Link } from "react-router-dom";
 import SocialImage from "../assets/social.png";
 import { motion } from "framer-motion";
+import Creator from "../assets/Creator-Onboard-StatCard.png";
+import Collab from "../assets/Successfull-Collaboration.png";
 
 const Home = () => {
+  const cards = [
+    {
+      img: Creator,
+      title: "🧑‍🤝‍🧑 Creators Onboarded",
+      text: "2,500+ collabs completed Connecting creators with the right partners seamlessly.",
+    },
+    {
+      img: Collab,
+      title: "🤝 Successful Collaborations",
+      text: "2,500+ collabs completed,Connecting creators with the right partners seamlessly.",
+    },
+    {
+      img: "https://via.placeholder.com/300x200",
+      title: "🎯 Brand Deals Tracked",
+      text: "1,200+ brand deals managed. Empowering creators to focus on content, not paperwork.",
+    },
+  ];
   return (
     <>
       <Navbar />
 
       <section className="bg-base-100 text-base-content py-20 px-6 mt-10 lg:px-20 mb-2">
-        
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
-            <motion.left_hero
-          initial={{ x: -200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.0, ease: "easeOut" }}
-          className="left-hero"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Text Content */}
+          <motion.left_hero
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.0, ease: "easeOut" }}
+            className="left-hero"
+          >
             <div className="left-hero space-y-8">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                 Organize Your{" "}
@@ -71,24 +89,53 @@ const Home = () => {
                 {/* <button className="btn btn-outline">🎬 Watch Demo</button> */}
               </div>
             </div>
-            </motion.left_hero>
-            {/* Hero Image */}
-            <motion.hero
-              initial={{ x: 200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.0, ease: "easeOut" }}
-              className="hero"
+          </motion.left_hero>
+          {/* Hero Image */}
+          <motion.hero
+            initial={{ x: 200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.0, ease: "easeOut" }}
+            className="hero"
+          >
+            <div className="hero flex justify-center">
+              <img
+                src={HeroImg}
+                alt="CollabNest Hero"
+                className="max-w-full w-[500px] rounded-3xl"
+              />
+            </div>
+          </motion.hero>
+        </div>
+      </section>
+
+      <section className="stat_card py-10 px-6 bg-base-100">
+        <h1 className="text-3xl md:text-4xl font-bold text-center pt-4 pb-4 tracking-wide">
+          What we do?
+          <div className="w-54 h-1 bg-blue-500 mx-auto rounded-full mb-8"></div>
+        </h1>
+
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 ">
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="rounded-2xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
             >
-              <div className="hero flex justify-center">
-                <img
-                  src={HeroImg}
-                  alt="CollabNest Hero"
-                  className="max-w-full w-[500px] rounded-3xl"
-                />
+              <img
+                src={card.img}
+                alt={card.title}
+                className="w-full h-58 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-neon-600 tracking-wide">
+                  {card.title}
+                </h3>
+                <p className="text-gray-700 text-base leading-relaxed">
+                  {card.text}
+                </p>
               </div>
-            </motion.hero>
-          </div>
-        
+            </div>
+          ))}
+        </div>
       </section>
 
       <Facilities />
