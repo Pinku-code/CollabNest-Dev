@@ -135,12 +135,12 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
               <div className="form-control">
                 <label className="label"><span className="label-text">Email</span></label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" className="input input-bordered" required />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
               </div>
 
               <div className="form-control mt-4">
                 <label className="label"><span className="label-text">Password</span></label>
-                <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" className="input input-bordered" required />
+                <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                 </label>

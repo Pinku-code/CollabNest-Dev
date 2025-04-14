@@ -39,7 +39,7 @@ const ContactForm = () => {
               <div className="card-body">
                 {submitted && (
                   <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-40 rounded-2xl">
-                    <div className="bg-violet-600 text-white px-6 py-3 rounded-xl shadow-md">
+                    <div className="bg-indigo-500 text-white px-6 py-3 rounded-xl shadow-md">
                       Thank you for contacting us!
                     </div>
                   </div>
@@ -57,7 +57,7 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     />
                   <input
                     type="email"
@@ -66,7 +66,7 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                   <input
                     type="text"
@@ -74,7 +74,7 @@ const ContactForm = () => {
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                   <textarea
                     name="message"
@@ -82,7 +82,7 @@ const ContactForm = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 h-32 border border-gray-300 dark:border-gray-700 rounded-lg resize-none placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                    className="w-full p-3 h-32 border border-gray-300 dark:border-gray-700 rounded-lg resize-none placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   ></textarea>
                   <button
                     type="submit"

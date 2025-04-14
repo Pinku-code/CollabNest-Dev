@@ -83,7 +83,7 @@ const Plans = () => {
             <Navbar />
             <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 px-4 py-8 md:flex-row md:gap-6">
                 {/* Plan Card 1 */}
-                <div className="card w-full max-w-sm bg-base-100 shadow-md mb-6 md:mb-0 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div className="card w-full max-w-sm bg-base-100 shadow-md shadow-indigo-500 mb-6 md:mb-0 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                     <h1 className="text-2xl font-bold text-center pt-4">Basic</h1>
                     <div className="card-body">
                         <div className="flex justify-between">
@@ -100,7 +100,7 @@ const Plans = () => {
                 </div>
 
                 {/* Plan Card 2 */}
-                <div className="card w-full max-w-sm bg-base-100 shadow-md mb-6 md:mb-0 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div className="card w-full max-w-sm bg-base-100 shadow-md shadow-yellow-600 mb-6 md:mb-0 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                     <h1 className="text-2xl font-bold text-center pt-4">Standard</h1>
                     <div className="card-body">
                         <span className="badge badge-warning self-start">Most Popular</span>
@@ -118,7 +118,7 @@ const Plans = () => {
                 </div>
 
                 {/* Plan Card 3 */}
-                <div className="card w-full max-w-sm bg-base-100 shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div className="card w-full max-w-sm bg-base-100 shadow-md shadow-green-600 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                     <h1 className="text-2xl font-bold text-center pt-4">Premium</h1>
                     <div className="card-body">
                         <div className="flex justify-between">
