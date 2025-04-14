@@ -19,8 +19,12 @@ const register = async (req, res) => {
   }
 };
 
+{ /* Login function to authenticate user and return JWT token */ }
+{ /* This function checks if the user exists and if the password matches. If so, it generates a JWT token. */ }
 const login = async (req, res) => {
+
   const { email, password } = req.body;
+  
 
   try {
     const user = await User.findOne({ email });
@@ -31,7 +35,15 @@ const login = async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
-    res.status(200).json({ token });
+    res.status(200).json({
+  token,
+  user: {
+    id: user._id,
+    fullName: user.fullName,
+    email: user.email
+  }
+});
+
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }

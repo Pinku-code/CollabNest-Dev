@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion"; 
-// import AuthMenu from './AuthMenu';
 import AuthMenu from "./AuthMenu";
 
 const Navbar = () => {
@@ -121,38 +120,6 @@ const Navbar = () => {
           )}
         </button>
 
-        {/* Auth Button */}
-        {/* <div className="dropdown dropdown-end">
-          <Link to="/login">
-            <label tabIndex={0} className="btn btn-ghost rounded-full">
-              Auth
-            </label>
-          </Link>
-        </div> */}
-        {/* <div className="dropdown dropdown-end">
-  <label tabIndex={0} className="btn btn-ghost btn-circle">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </label>
-  <ul
-    tabIndex={0}
-    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-40"
-  >
-    <li>
-      <Link to="/login">Login</Link>
-    </li>
-    <li>
-      <Link to="/register">Signup</Link>
-    </li>
-  </ul>
-</div> */}
 <AuthMenu />
 
       </div>

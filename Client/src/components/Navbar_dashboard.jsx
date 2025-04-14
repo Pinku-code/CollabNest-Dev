@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import avatar from "../assets/avatar.png";
+import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 
 const Navbar_dashboard = () => {
@@ -28,13 +31,63 @@ useEffect(() => {
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
 
+
+const [creatorInfo, setCreatorInfo] = useState({
+    name: "",
+    email: "",
+    niche: "",
+  });
+const navigate = useNavigate();
+
+useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("You must be logged in");
+      navigate("/login");
+      return;
+    }
+
+    console.log("Fetch Dashboard above");
+
+    const fetchdata = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/cr_dash", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.table(res);
+        if (!res.ok) {
+          throw new Error("Failed to fetch dashboard data");
+        }
+
+        console.table(res);
+
+        const data = await res.json();
+
+        if (data.creatorInfo) {
+          setCreatorInfo(data.creatorInfo);
+        }
+
+
+      } catch (error) {
+        console.error(error);
+        toast.error("Error loading dashboard");
+      }
+    };
+
+    fetchdata();
+  }, [navigate]);
+
+  console.log(creatorInfo.name);
+
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1.0, ease: "easeOut" }}
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-10 w-full max-w-7xl transition-all duration-30 ${
-        isScrolled ? "scale-95 shadow-md bg-base-100/90 backdrop-blur-md" : ""
+        isScrolled ? "scale-95 shadow-md bg-base-100/90 backdrop-blur-md rounded-full" : ""
       }`}
     >
       <div className="navbar bg-base-100 shadow-lg px-4 py-2 rounded-full">
@@ -150,7 +203,7 @@ useEffect(() => {
   <div className="dropdown dropdown-end">
     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
       <div className="w-10 rounded-full">
-        <img src="/avatar-placeholder.png" alt="User avatar" />
+        <img src={avatar} alt="User avatar" />
       </div>
     </label>
     <ul
@@ -158,7 +211,7 @@ useEffect(() => {
       className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
     >
       <li>
-        <span className="font-semibold">👋 Hello, Creator</span>
+        <span className="font-semibold">👋 Hello, {creatorInfo.name.split(" ")[0]}</span>
       </li>
       <li>
         <Link to="/profile">Profile</Link>
