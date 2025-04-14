@@ -78,7 +78,7 @@ const Navbar = () => {
       {/* Center - Large Screens */}
       <div className="navbar-center mx-auto hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-3">
-          {["/", "/docs", "/plans","/contact","/About"].map((path) => (
+          {["/", "/plans","/contact","/About","/service"].map((path) => (
             <li key={path}>
               <Link
                 to={path}
