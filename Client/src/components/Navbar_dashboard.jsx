@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import avatar from "../assets/avatar.png";
+import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const Navbar_dashboard = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -86,7 +87,7 @@ useEffect(() => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1.0, ease: "easeOut" }}
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-10 w-full max-w-7xl transition-all duration-30 ${
-        isScrolled ? "scale-95 shadow-md bg-base-100/90 backdrop-blur-md" : ""
+        isScrolled ? "scale-95 shadow-md bg-base-100/90 backdrop-blur-md rounded-full" : ""
       }`}
     >
       <div className="navbar bg-base-100 shadow-lg px-4 py-2 rounded-full">
