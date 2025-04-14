@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import HeroImg from "../assets/hero.png";
 import Footer from "../components/Footer";
@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import Creator from "../assets/Creator-Onboard-StatCard.png";
 import Collab from "../assets/Successfull-Collaboration.png";
 import Brand from "../assets/Brand-Deal.png";
+import ServicePage from "./servicePage";
 
 const Home = () => {
   const cards = [
@@ -28,6 +29,12 @@ const Home = () => {
       text: "1,200+ brand deals managed. Empowering creators to focus on content, not paperwork.",
     },
   ];
+
+  useEffect(() => {
+    // Scroll to top of the page when the component mounts
+    window.scrollTo(0, 0);
+  },[]); // Empty dependency array ensures this effect runs only once when the page loads
+
   return (
     <>
       <Navbar />
@@ -35,7 +42,7 @@ const Home = () => {
       <section className="bg-base-100 text-base-content py-20 px-6 mt-10 lg:px-20 mb-2">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
-          <motion.left_hero
+          <motion.div
             initial={{ x: -200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1.0, ease: "easeOut" }}
@@ -49,13 +56,12 @@ const Home = () => {
                 in One Place
               </h1>
               <p className="text-lg leading-relaxed">
-                CollabNest is your all-in-one content management workspace —
-                plan videos, track collaborations, manage brand deals, and spark
-                fresh ideas with AI. Built for YouTubers, Streamers, and
-                Creators who mean business.
+                CollabNest is your all-in-one content management workspace — plan
+                videos, track collaborations, manage brand deals, and spark fresh
+                ideas with AI. Built for YouTubers, Streamers, and Creators who
+                mean business.
               </p>
               <div className="flex flex-wrap gap-4">
-                {/* <button className="btn btn-primary">🚀 Get Started for Free</button> */}
                 <div className="drawer drawer-end">
                   <input
                     id="my-drawer-4"
@@ -86,13 +92,11 @@ const Home = () => {
                     </ul>
                   </div>
                 </div>
-
-                {/* <button className="btn btn-outline">🎬 Watch Demo</button> */}
               </div>
             </div>
-          </motion.left_hero>
+          </motion.div>
           {/* Hero Image */}
-          <motion.hero
+          <motion.div
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1.0, ease: "easeOut" }}
@@ -105,21 +109,24 @@ const Home = () => {
                 className="max-w-full w-[500px] rounded-3xl"
               />
             </div>
-          </motion.hero>
+          </motion.div>
         </div>
       </section>
 
       <section className="stat_card py-10 px-6 bg-base-100">
         <h1 className="text-primary mb-12 text-3xl md:text-4xl font-bold text-center pt-4 pb-4 tracking-wide">
           What we do?
-          {/* <div className="w-54 h-1 bg-primary mx-auto rounded-full mb-8"></div> */}
         </h1>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 ">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
           {cards.map((card, index) => (
-            <div
+            <motion.div
               key={index}
               className="rounded-2xl shadow-md shadow-indigo-500 overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <img
                 src={card.img}
@@ -134,7 +141,7 @@ const Home = () => {
                   {card.text}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -143,16 +150,28 @@ const Home = () => {
 
       <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-base-200 gap-8 p-4">
         {/* Left - Image */}
-        <div className="w-full max-w-md drop-shadow-2xl">
+        <motion.div
+          className="w-full max-w-md drop-shadow-2xl"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <img
             src={SocialImage}
             alt="FAQ Illustration"
             className="h-auto object-cover"
           />
-        </div>
+        </motion.div>
 
         {/* Right - FAQ */}
-        <div className="join join-vertical bg-base-100 shadow-lg p-6 rounded-lg w-full max-w-md">
+        <motion.div
+          className="join join-vertical bg-base-100 shadow-lg p-6 rounded-lg w-full max-w-md"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-2xl font-bold text-center mb-4">FAQs</h2>
 
           <div className="collapse collapse-arrow join-item border border-base-300">
@@ -204,8 +223,9 @@ const Home = () => {
               Go to "Menu" and select "Help" to contact us.
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
+
       <Footer />
     </>
   );

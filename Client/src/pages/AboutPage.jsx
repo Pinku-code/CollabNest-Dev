@@ -1,18 +1,21 @@
 import { Library } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // import motion
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const AboutPage = () => {
+   useEffect(() => {
+          window.scrollTo(0, 0); // ⬆️ scroll to top on load
+        }, []);
   return (
     <div>
       <Navbar />
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.0, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-6xl mx-auto px-6 py-20"
       >
         <h1 className="text-5xl font-extrabold mb-8 text-center">
@@ -28,12 +31,11 @@ const AboutPage = () => {
         <div className="grid gap-12 md:grid-cols-2 items-start">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="bg-base-200 p-6 md:p-8 rounded-3xl shadow-2xl transition-colors"
           >
-            <h2 className="text-2xl font-semibold text-indigo-500">Why We Built CollabNest</h2>
+            <h2 className="text-2xl font-semibold text-indigo-500 mb-4">Why We Built CollabNest</h2>
             <p className="text-gray-500 mb-4">
               Content creators often find themselves juggling multiple tools—Notion for notes,
               Excel for tracking deals, Google Docs for scripts, and sticky notes for ideas.
@@ -52,9 +54,8 @@ const AboutPage = () => {
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="bg-base-200 p-6 md:p-8 rounded-3xl shadow-2xl transition-colors"
           >
             <h2 className="text-2xl font-semibold text-indigo-500 mb-4">Key Features</h2>
@@ -70,9 +71,8 @@ const AboutPage = () => {
 
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
           className="mt-20 text-center"
         >
           <p className="text-gray-600">

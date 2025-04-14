@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
@@ -23,6 +23,9 @@ const ContactForm = () => {
 
     setTimeout(() => setSubmitted(false), 3000);
   };
+   useEffect(() => {
+          window.scrollTo(0, 0); // ⬆️ scroll to top on load
+        }, []);
 
   return (
     <div>
