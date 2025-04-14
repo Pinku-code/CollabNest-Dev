@@ -28,7 +28,9 @@ router.get('/cr_dash', protect, async (req, res) => {
         posts: user.postsCount || 0,
         followers: user.followers || 0,
         following: user.following || 0,
-        earnings: user.earnings || "₹0"
+        earnings: user.earnings || "₹0",
+        totalcollabs: user.totalcollabs || 0,
+        pending: user.pending || 0
       },
       recentActivity: [
         "Uploaded sponsored video for XYZ Brand",

@@ -9,7 +9,9 @@ const userSchema = new mongoose.Schema({
   postsCount: { type: Number, default: 0 },
   followers: { type: Number, default: 0 },
   following: { type: Number, default: 0 },
-  earnings: { type: String, default: "$0.00" }, // You can use Number if calculations are needed
+  totalcollabs: { type: Number, default: 10 },
+  pending: { type: Number, default: 0 },
+  earnings: { type: String, default: "₹0.00" }, // You can use Number if calculations are needed
 
 }, { timestamps: true,minimize: false });
 

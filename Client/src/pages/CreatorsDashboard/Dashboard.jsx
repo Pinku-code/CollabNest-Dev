@@ -62,10 +62,12 @@ const CreatorsDashboard = () => {
         console.table(statsData);
 
         setStats([
-          { title: "Total Videos", value: statsData.posts ?? 0, icon: "🎥" },
-          { title: "Followers", value: statsData.followers ?? 0, icon: "👥" },
-          { title: "Following", value: statsData.following ?? 0, icon: "➡️" },
-          { title: "Total Earnings", value: statsData.earnings ?? 0, icon: "💰" },
+          { title: "Total Videos", value: statsData.posts ?? 10, icon: "🎥" },
+          { title: "Followers", value: statsData.followers ?? 30, icon: "👥" },
+          { title: "Following", value: statsData.following ?? 20, icon: "➡️" },
+          { title: "Total Collabs", value: statsData.totalcollabs ?? 50, icon: "🤝" },
+          { title: "Pending", value: statsData.pending ?? 5, icon: "⏳" },
+          { title: "Total Earnings", value: statsData.earnings ?? 50000, icon: "💰" },
         ]);
 
         if (Array.isArray(data.recentActivity)) {

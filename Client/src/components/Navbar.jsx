@@ -53,7 +53,8 @@ const Navbar = () => {
             <li><Link to="/docs">Docs</Link></li>
             <li><Link to="/plans">Plans</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
-
+            <li><Link to={"/about"}>About</Link></li>
+            <li><Link to={"/service"}>Services</Link></li>
           </ul>
         </div>
         {/* <Link to="/" className="btn btn-soft btn-primary text-xl font-bold normal-case rounded-full">
@@ -77,7 +78,7 @@ const Navbar = () => {
       {/* Center - Large Screens */}
       <div className="navbar-center mx-auto hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-3">
-          {["/", "/docs", "/plans","/contact"].map((path) => (
+          {["/", "/docs", "/plans","/contact","/About"].map((path) => (
             <li key={path}>
               <Link
                 to={path}
