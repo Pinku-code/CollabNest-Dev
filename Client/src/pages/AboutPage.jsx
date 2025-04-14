@@ -1,31 +1,35 @@
+import { Library } from "lucide-react";
 import React from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 const AboutPage = () => {
   return (
     <div>
       <Navbar/>
-        <div className="bg-base-100 max-w-5xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-6 text-center ">About CollabNest</h1>
-      <p className="text-lgmb-10 text-center max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto px-6 py-20">
+      <h1 className="text-5xl font-extrabold mb-8 text-center">
+        About <span className="text-indigo-500">CollabNest</span>
+      </h1>
+      <p className="text-xl text-gray-500 mb-16 text-center max-w-3xl mx-auto">
         CollabNest is the smart hub built for today’s digital creators—whether you're a
         YouTuber, TikToker, livestreamer, or podcaster. Designed to streamline your content journey,
         CollabNest brings your entire creative workflow into one powerful, AI-enhanced workspace.
       </p>
 
-      <div className="grid gap-12 md:grid-cols-2">
-        <div>
-          <h2 className="text-2xl font-semibold  mb-4">Why We Built CollabNest</h2>
-          <p className=" mb-4">
+      <div className="grid gap-12 md:grid-cols-2 items-start">
+        <div className="bg-base-200 p-6 md:p-8 rounded-3xl shadow-2xl transition-colors">
+          <h2 className="text-2xl font-semibold text-indigo-500">Why We Built CollabNest</h2>
+          <p className="text-gray-500 mb-4">
             Content creators often find themselves juggling multiple tools—Notion for notes,
             Excel for tracking deals, Google Docs for scripts, and sticky notes for ideas.
             This patchwork system wastes time, creates confusion, and leads to missed opportunities.
           </p>
-          <p className="">
+          <p className="text-gray-500 ">
             CollabNest solves this by unifying everything in one intuitive platform:
           </p>
-          <ul className="list-disc list-inside mt-4  space-y-2">
+          <ul className="list-disc list-inside mt-4 text-gray-500 space-y-2">
             <li>Plan content with an intelligent calendar</li>
             <li>Track brand deals with built-in CRM</li>
             <li>Organize scripts with version control</li>
@@ -33,9 +37,9 @@ const AboutPage = () => {
           </ul>
         </div>
 
-        <div className="bg-base-200 p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-semibold  mb-4">Key Features</h2>
-          <ul className="list-disc list-inside space-y-2 ">
+        <div className="bg-base-200 p-6 md:p-8 rounded-3xl shadow-2xl transition-colors">
+          <h2 className="text-2xl font-semibold text-indigo-500 mb-4">Key Features</h2>
+          <ul className="list-disc list-inside space-y-3 text-gray-500">
             <li><strong>Script Bank:</strong> Organize scripts by status with versioning and search</li>
             <li><strong>AI-Powered Content Ideas:</strong> Get trending video topics via OpenAI & Gemini</li>
             <li><strong>Collab & Brand Deal CRM:</strong> Manage proposals, status, and contact history</li>
@@ -45,13 +49,15 @@ const AboutPage = () => {
         </div>
       </div>
 
-      <div className="mt-16 text-center">
-        <p className="">Have questions or want to partner with us? Reach out at <span className="text-blue-600"><Link to={"/contact"}>CollabNest</Link></span>.</p>
+      <div className="mt-20 text-center">
+        <p className="text-gray-600 ">
+          Have questions or want to partner with us? Reach out at <span className="text-indigo-500"><Link to={"/contact"}>CollabNest</Link></span>.
+        </p>
       </div>
     </div>
     <Footer/>
     </div>
-  
+    
   );
 };
 
