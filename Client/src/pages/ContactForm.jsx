@@ -27,11 +27,11 @@ const ContactForm = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 py-10 bg-base-200 rounded-2xl p-8 m-4 relative">
+      <div className="max-w-7xl mx-auto px-2 py-4 bg-base-200 rounded-2xl relative">
         {/* Title */}
 
         {/* Grid layout: 2 columns on md+ screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Contact Form Box */}
           <motion.left_card
             initial={{ x: -200, opacity: 0 }}
