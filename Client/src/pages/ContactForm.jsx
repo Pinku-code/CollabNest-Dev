@@ -36,7 +36,7 @@ const ContactForm = () => {
           <motion.left_card
             initial={{ x: -200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 1.0, ease: "easeOut" }}
             className="left_card"
           >
             <div className="min-h-screen flex items-center justify-center ">
@@ -103,7 +103,7 @@ const ContactForm = () => {
             <motion.card
               initial={{ x: 200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              transition={{ duration: 1.0, ease: "easeOut" }}
               className="card"
             >
               <div className="card w-full max-w-lg shadow-2xl bg-base-100 ">
