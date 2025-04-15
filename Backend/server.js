@@ -10,7 +10,7 @@ connectDB();
 
 // Middleware
 app.use(cors());
-app.use(cors({ origin: "https://collab-nest-dev.vercel.app/" }));
+app.use(cors({ origin: "https://collab-nest-dev.vercel.app" }));
 app.use(express.json());
 
 // Routes
