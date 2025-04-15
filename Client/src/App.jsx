@@ -13,7 +13,7 @@ import Collabs from "./pages/CreatorsDashboard/Collabs";
 import Video_manager from "./pages/CreatorsDashboard/Video_manger";
 import ServicePage from "./pages/servicePage";
 import AboutPage from "./pages/AboutPage";
-import ChatPage from "./pages/ChatPage";
+import ChatPage from "./pages/ChatAi/ChatPage";
 
 function App() {
   return (
