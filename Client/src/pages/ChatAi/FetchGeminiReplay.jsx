@@ -1,7 +1,7 @@
 export const FetchGeminiReply = async (question) => {
   
   try {
-    const res = await fetch("http://localhost:5000/api/gemini", {
+    const res = await fetch("https://collabnest-dev.onrender.com/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question }),

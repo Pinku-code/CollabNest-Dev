@@ -51,7 +51,7 @@ useEffect(() => {
 
     const fetchdata = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/cr_dash", {
+        const res = await fetch("https://collabnest-dev.onrender.com/api/auth/cr_dash", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
