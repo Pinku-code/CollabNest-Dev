@@ -1,4 +1,6 @@
 import React from "react";
+import { useState, useEffect } from 'react';
+import Loader from './components/Loader';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Docs from "./pages/Docs";
@@ -14,8 +16,22 @@ import Video_manager from "./pages/CreatorsDashboard/Video_manger";
 import ServicePage from "./pages/servicePage";
 import AboutPage from "./pages/AboutPage";
 import ChatPage from "./pages/ChatAi/ChatPage";
+// import ChatAi from "./pages/ChatAi";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate API call
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <div>
       <Router>
@@ -33,6 +49,7 @@ function App() {
           <Route path="/service" element={<ServicePage/>} />
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/aichat" element={<ChatPage/>}/>
+          {/* <Route path="/aichat2" element={<ChatAi/>}/> */}
           {/* <Route path="*" element={<Home />} /> */}
 
         </Routes>
@@ -51,6 +68,7 @@ function App() {
         }}
       />
     </div>
+    
   );
 }
 

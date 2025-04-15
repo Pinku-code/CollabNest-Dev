@@ -8,7 +8,8 @@
 //   const chatContainerRef = useRef(null);
 
 //   const fetchGeminiReply = async (question) => {
-//     const apiKey = import.meta.env.API_KEY; // Replace with your actual API key
+//     const apiKey = "AIzaSyCyS4a9EZiM07OSAHHQjlzRtAXJ8q6lOZs"
+//     ; // Replace with your actual API key
 //     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
   
 //     // Detect if user wants a bullet point answer

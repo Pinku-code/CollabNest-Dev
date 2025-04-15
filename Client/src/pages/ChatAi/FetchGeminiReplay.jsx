@@ -1,4 +1,5 @@
 export const FetchGeminiReply = async (question) => {
+  
   try {
     const res = await fetch("http://localhost:5000/api/gemini", {
       method: "POST",
