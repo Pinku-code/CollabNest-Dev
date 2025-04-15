@@ -221,7 +221,7 @@ useEffect(() => {
           className="text-red-500 font-semibold"
           onClick={() => {
             localStorage.removeItem("authToken");
-            window.location.href = "/login";
+            navigate("/login");
           }}
         >
           Logout
