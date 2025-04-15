@@ -78,7 +78,7 @@ const Navbar = () => {
       {/* Center - Large Screens */}
       <div className="navbar-center mx-auto hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-3">
-          {["/", "/docs", "/plans","/contact","/About"].map((path) => (
+          {["/", "/plans","/contact","/About","/service"].map((path) => (
             <li key={path}>
               <Link
                 to={path}
@@ -97,6 +97,12 @@ const Navbar = () => {
 
       {/* End */}
       <div className="navbar-end gap-2">
+      <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-700 transition">
+        <Link to={"/aichat"}>AI</Link>
+      
+    </button>
+      
+
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
@@ -121,6 +127,7 @@ const Navbar = () => {
           )}
         </button>
 
+        
 <AuthMenu />
 
       </div>

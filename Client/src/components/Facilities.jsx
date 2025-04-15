@@ -1,4 +1,3 @@
-// Facilities.jsx
 import React from 'react';
 import {
   Users,
@@ -10,6 +9,7 @@ import {
   BarChart,
   ShieldCheck
 } from 'lucide-react';
+import { motion } from 'framer-motion'; // ✅ Import motion
 
 const facilities = [
   {
@@ -57,19 +57,34 @@ const facilities = [
 const Facilities = () => {
   return (
     <div className="min-h-screen bg-base-100 py-16 px-4 sm:px-6 lg:px-20">
-      <h2 className="text-3xl font-bold text-center mb-12 text-primary">Platform Facilities</h2>
+      <h2 className="text-3xl font-bold text-center mb-12 text-primary">
+        Platform Facilities
+      </h2>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {facilities.map((facility, index) => (
-          <div
+          <motion.div
             key={index}
             className="card w-full max-w-sm bg-base-100 shadow-md hover:shadow-xl transform transition-transform duration-300 hover:scale-105 mx-auto p-6 rounded-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.2, // Add delay for staggered effect
+              type: "spring", // Adding spring for a more natural movement
+              stiffness: 100,
+              damping: 25
+            }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <div className="flex items-center gap-4 mb-3">
               {facility.icon}
-              <h3 className="text-lg font-semibold text-primary">{facility.title}</h3>
+              <h3 className="text-lg font-semibold text-primary">
+                {facility.title}
+              </h3>
             </div>
             <p className="text-base-content text-sm">{facility.description}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

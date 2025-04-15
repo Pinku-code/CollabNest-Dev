@@ -13,6 +13,7 @@ import Collabs from "./pages/CreatorsDashboard/Collabs";
 import Video_manager from "./pages/CreatorsDashboard/Video_manger";
 import ServicePage from "./pages/servicePage";
 import AboutPage from "./pages/AboutPage";
+import ChatPage from "./pages/ChatAi/ChatPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/cr_dash/Video_manager" element={<Video_manager />} />
           <Route path="/service" element={<ServicePage/>} />
           <Route path="/about" element={<AboutPage/>}/>
+          <Route path="/aichat" element={<ChatPage/>}/>
           {/* <Route path="*" element={<Home />} /> */}
 
         </Routes>
