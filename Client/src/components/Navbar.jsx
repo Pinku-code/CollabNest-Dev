@@ -97,6 +97,12 @@ const Navbar = () => {
 
       {/* End */}
       <div className="navbar-end gap-2">
+      <button className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-700 transition">
+        <Link to={"/aichat"}>AI</Link>
+      
+    </button>
+      
+
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
@@ -121,6 +127,7 @@ const Navbar = () => {
           )}
         </button>
 
+        
 <AuthMenu />
 
       </div>
