@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import Creator from "../assets/Creator-Onboard-StatCard.png";
 import Collab from "../assets/Successfull-Collaboration.png";
 import Brand from "../assets/Brand-Deal.png";
-import ServicePage from "./servicePage";
+import ServicePage from "./ServicePage";
 
 const Home = () => {
   const cards = [
