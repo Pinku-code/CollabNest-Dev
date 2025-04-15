@@ -221,6 +221,7 @@ useEffect(() => {
           className="text-red-500 font-semibold"
           onClick={() => {
             localStorage.removeItem("authToken");
+            toast.success("Login successful!");
             navigate("/login");
           }}
         >
