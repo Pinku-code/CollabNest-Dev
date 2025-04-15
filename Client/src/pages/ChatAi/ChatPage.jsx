@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FetchGeminiReply } from "./FetchGeminiReplay";
 import Navbar from "../../components/Navbar";
 import { Bot, User } from "lucide-react";
@@ -36,10 +36,11 @@ const ChatPage = () => {
   }, [chatLog]);
 
   return (
-    <div className="bg-[#0f172a] min-h-screen text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white flex flex-col items-center justify-start py-6 px-4 font-sans">
       <Navbar />
-      <div className="flex-grow px-4 py-2 overflow-y-auto">
-        <div className="max-w-3xl mx-auto space-y-4">
+
+      <div className="w-full max-w-3xl bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl p-6 flex flex-col flex-grow mt-6 min-h-[70vh]">
+        <div className="flex-1 overflow-y-auto space-y-4 pr-1">
           {chatLog.map((msg, index) => (
             <div
               key={index}
@@ -53,7 +54,7 @@ const ChatPage = () => {
                 </div>
               )}
               <div
-                className={`px-4 py-2 rounded-2xl max-w-[75%] transition duration-300 whitespace-pre-wrap ${
+                className={`px-4 py-2 rounded-2xl max-w-[75%] whitespace-pre-wrap ${
                   msg.type === "user"
                     ? "bg-indigo-600 text-white rounded-br-none"
                     : "bg-gray-800 text-gray-200 rounded-bl-none"
@@ -82,24 +83,24 @@ const ChatPage = () => {
 
           <div ref={chatEndRef} />
         </div>
-      </div>
 
-      <div className="sticky bottom-0 z-10 bg-[#0f172a] border-t border-gray-700 py-3 px-4">
-        <div className="max-w-3xl mx-auto flex items-center gap-2">
-          <textarea
-            className="flex-grow resize-none p-3 rounded-xl bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-            rows="1"
-            placeholder="Ask something amazing..."
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            onKeyDown={handleKeyPress}
-          />
-          <button
-            className="bg-indigo-600 hover:bg-indigo-700 transition px-4 py-2 rounded-xl text-white text-sm"
-            onClick={handleSend}
-          >
-            Send
-          </button>
+        <div className="pt-4 border-t border-white/10 mt-4">
+          <div className="flex items-center gap-2">
+            <textarea
+              className="flex-grow resize-none p-3 rounded-xl bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+              rows="1"
+              placeholder="Type your question..."
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              onKeyDown={handleKeyPress}
+            />
+            <button
+              className="bg-indigo-600 hover:bg-indigo-700 transition px-4 py-2 rounded-xl text-white text-sm"
+              onClick={handleSend}
+            >
+              Send
+            </button>
+          </div>
         </div>
       </div>
     </div>
