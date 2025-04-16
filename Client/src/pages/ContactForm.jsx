@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
+import { API } from "../../src/utils/api";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,6 +12,8 @@ const ContactForm = () => {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) =>
@@ -18,31 +21,34 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setLoading(true); // start loader
+
     try {
-      const res = await fetch("https://collabnest-dev.onrender.com/api/contact", {
+      const res = await fetch(API.CONTACT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-  
+
       const data = await res.json();
       if (res.ok) {
         toast.success("Message sent successfully!");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        toast.success("Failed to send message: " + data.message);
+        toast.error("Failed to send message: " + data.message);
       }
     } catch (error) {
-      toast.success("Error sending message: " + error.message);
+      toast.error("Error sending message: " + error.message);
+    } finally {
+      setLoading(false); // stop loader
     }
   };
-  
-   useEffect(() => {
-          window.scrollTo(0, 0); // ⬆️ scroll to top on load
-        }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // ⬆️ scroll to top on load
+  }, []);
 
   return (
     <div>
@@ -109,9 +115,24 @@ const ContactForm = () => {
                       required
                       className="w-full p-3 h-32 border border-gray-300 dark:border-gray-700 rounded-lg resize-none placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     ></textarea>
-                    <button type="submit" className=" btn btn-primary w-full">
-                      Send Message
-                    </button>
+                    {loading ? (
+                      <button
+                        type="button"
+                        disabled
+                        className="btn btn-primary w-full flex justify-center items-center gap-2"
+                      >
+                        Sending
+                        <span className="flex gap-1">
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                        </span>
+                      </button>
+                    ) : (
+                      <button type="submit" className="btn btn-primary w-full">
+                        Send Message
+                      </button>
+                    )}
                   </form>
                 </div>
               </div>

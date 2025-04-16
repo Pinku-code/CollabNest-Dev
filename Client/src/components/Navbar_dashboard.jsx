@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import avatar from "../assets/avatar.png";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import { API } from "../../src/utils/api";
 
 const Navbar_dashboard = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -51,7 +52,11 @@ useEffect(() => {
 
     const fetchdata = async () => {
       try {
-        const res = await fetch("https://collabnest-dev.onrender.com/api/auth/cr_dash", {
+        const res = await fetch(API.DASHBOARD, {
+
+          // URL of render = https://collabnest-dev.onrender.com/api/auth/cr_dash
+          // URL of localhost = http://localhost:5000/api/auth/cr_dash
+
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -61,7 +66,7 @@ useEffect(() => {
           throw new Error("Failed to fetch dashboard data");
         }
 
-        console.table(res);
+        
 
         const data = await res.json();
 
@@ -79,7 +84,7 @@ useEffect(() => {
     fetchdata();
   }, [navigate]);
 
-  console.log(creatorInfo.name);
+  
 
   return (
     <motion.nav

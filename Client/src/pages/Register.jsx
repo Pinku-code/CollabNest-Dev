@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { API } from "../../src/utils/api";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Register = () => {
     confirmPassword: "",
     terms: false,
   });
+  const [loading, setLoading] = useState(false);
 
   const { fullName, email, password, confirmPassword, terms } = formData;
 
@@ -27,7 +29,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (password !== confirmPassword) {
       return toast.error("Passwords do not match.");
     }
@@ -37,7 +39,10 @@ const Register = () => {
     }
 
     try {
-      const res = await axios.post("https://collabnest-dev.onrender.com/api/auth/register", {
+      const res = await axios.post(API.REGISTER, {
+
+        // URL of render = https://collabnest-dev.onrender.com/api/auth/register
+
         fullName,
         email,
         password,
@@ -47,6 +52,8 @@ const Register = () => {
       navigate("/login");
     } catch (err) {
       toast.error(err.response?.data?.message || "Registration failed.");
+    }finally{
+      setLoading(false); // stop loader
     }
   };
 
@@ -135,9 +142,24 @@ const Register = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary w-full">
-                  Register
-                </button>
+              {loading ? (
+                      <button
+                        type="button"
+                        disabled
+                        className="btn btn-primary w-full flex justify-center items-center gap-2"
+                      >
+                        Registering
+                        <span className="flex gap-1">
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                        </span>
+                      </button>
+                    ) : (
+                      <button type="submit" className="btn btn-primary w-full">
+                        Register
+                      </button>
+                    )}
               </div>
             </form>
 

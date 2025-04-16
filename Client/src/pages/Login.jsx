@@ -5,12 +5,14 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { API } from "../../src/utils/api";
 
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '', remember: false });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -19,9 +21,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true); // start loader
     try {
-      const res = await axios.post('https://collabnest-dev.onrender.com/api/auth/login', {
+      const res = await axios.post(API.LOGIN, {
+
+        // URL of render = https://collabnest-dev.onrender.com/api/auth/login
+        // URL of localhost = http://localhost:5000/api/auth/login
         email: formData.email,
         password: formData.password
       });
@@ -33,6 +38,8 @@ const Login = () => {
       navigate('/cr_dash'); // Redirect to dashboard
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed");
+    }finally {
+      setLoading(false); // stop loader
     }
   };
 
@@ -68,7 +75,24 @@ const Login = () => {
               </div>
 
               <div className="form-control mt-4">
-                <button type="submit" className="btn btn-primary w-full">Login</button>
+              {loading ? (
+                      <button
+                        type="button"
+                        disabled
+                        className="btn btn-primary w-full flex justify-center items-center gap-2"
+                      >
+                        Logging in
+                        <span className="flex gap-1">
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                        </span>
+                      </button>
+                    ) : (
+                      <button type="submit" className="btn btn-primary w-full">
+                        Login
+                      </button>
+                    )}
               </div>
             </form>
 

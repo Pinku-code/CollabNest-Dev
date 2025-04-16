@@ -8,10 +8,23 @@ dotenv.config();
 const app = express();
 connectDB();
 
-// Middleware
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://collabnest.vercel.app"], // or Vercel domain if using that
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
 app.use(cors());
-app.use(cors({ origin: "https://collab-nest-dev.vercel.app" }));
 app.use(express.json());
+
+
+//Test
+
+app.get("/", (req, res) => {
+    res.send("API is running...")
+});
 
 // Routes
 app.use('/api/auth', authRoutes);

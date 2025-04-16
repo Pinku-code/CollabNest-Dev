@@ -3,6 +3,7 @@ import DashNavbar from "../../components/Navbar_dashboard";
 import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { API } from "../../utils/api";
 import {
   LineChart,
   Line,
@@ -39,46 +40,42 @@ const CreatorsDashboard = () => {
 
     const fetchDashboard = async () => {
       try {
-        const res = await fetch("https://collabnest-dev.onrender.com/api/auth/cr_dash", {
+        const res = await fetch(API.DASHBOARD, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
         if (!res.ok) {
-          throw new Error("Failed to fetch dashboard data");
+          toast.error("Failed to fetch dashboard: " + res.status);
         }
-
-        console.table(res);
 
         const data = await res.json();
 
-        if (data.creatorInfo) {
-          setCreatorInfo(data.creatorInfo);
-        }
+        if (data.creatorInfo) setCreatorInfo(data.creatorInfo);
 
-        const statsData = data?.dashboardStats || {};
-
-        console.table(statsData);
-
+        const statsData = data.dashboardStats || {};
         setStats([
           { title: "Total Videos", value: statsData.posts ?? 10, icon: "🎥" },
           { title: "Followers", value: statsData.followers ?? 30, icon: "👥" },
           { title: "Following", value: statsData.following ?? 20, icon: "➡️" },
-          { title: "Total Collabs", value: statsData.totalcollabs ?? 50, icon: "🤝" },
+          {
+            title: "Total Collabs",
+            value: statsData.totalcollabs ?? 50,
+            icon: "🤝",
+          },
           { title: "Pending", value: statsData.pending ?? 5, icon: "⏳" },
-          { title: "Total Earnings", value: statsData.earnings ?? 50000, icon: "💰" },
+          {
+            title: "Total Earnings",
+            value: statsData.earnings ?? 50000,
+            icon: "💰",
+          },
         ]);
 
-        if (Array.isArray(data.recentActivity)) {
+        if (Array.isArray(data.recentActivity))
           setRecentActivities(data.recentActivity);
-        }
-
-        if (Array.isArray(data.topItems)) {
-          setTopItems(data.topItems);
-        }
+        if (Array.isArray(data.topItems)) setTopItems(data.topItems);
       } catch (error) {
-        console.error(error);
         toast.error("Error loading dashboard");
       }
     };
@@ -102,7 +99,7 @@ const CreatorsDashboard = () => {
       <DashNavbar />
       <div className="max-w-7xl mx-auto px-4 py-28">
         <h1 className="text-3xl font-bold text-center text-primary mb-8">
-          Welcome {creatorInfo.name} 
+          Welcome {creatorInfo.name}
         </h1>
 
         {/* Editable Creator Info */}
@@ -137,9 +134,15 @@ const CreatorsDashboard = () => {
             </div>
           ) : (
             <div>
-              <p><strong>Name:</strong> {creatorInfo?.name || "N/A"}</p>
-              <p><strong>Email:</strong> {creatorInfo?.email || "N/A"}</p>
-              <p><strong>Niche:</strong> {creatorInfo?.niche || "N/A"}</p>
+              <p>
+                <strong>Name:</strong> {creatorInfo?.name || "N/A"}
+              </p>
+              <p>
+                <strong>Email:</strong> {creatorInfo?.email || "N/A"}
+              </p>
+              <p>
+                <strong>Niche:</strong> {creatorInfo?.niche || "N/A"}
+              </p>
               <button
                 className="btn btn-outline btn-sm mt-2"
                 onClick={() => setEditing(true)}
@@ -152,7 +155,9 @@ const CreatorsDashboard = () => {
 
         {/* Top-Performing Videos */}
         <div className="bg-base-100 pt-5 pb-5 rounded-xl shadow-md mt-10 mb-10">
-          <h3 className="text-xl font-semibold mb-4">🔥 Top-Performing Videos</h3>
+          <h3 className="text-xl font-semibold mb-4">
+            🔥 Top-Performing Videos
+          </h3>
           <div className="space-y-3 p-3">
             {topItems?.length === 0 ? (
               <p className="text-sm text-gray-500">
@@ -166,7 +171,8 @@ const CreatorsDashboard = () => {
                 >
                   <h4 className="font-bold text-lg">{item.title}</h4>
                   <p className="text-sm text-gray-600">
-                    Views: {item.views.toLocaleString()} | Sponsor: {item.sponsors}
+                    Views: {item.views.toLocaleString()} | Sponsor:{" "}
+                    {item.sponsors}
                   </p>
                 </div>
               ))
@@ -191,7 +197,9 @@ const CreatorsDashboard = () => {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-400 mb-10">Loading statistics...</p>
+          <p className="text-center text-gray-400 mb-10">
+            Loading statistics...
+          </p>
         )}
 
         {/* Charts */}
