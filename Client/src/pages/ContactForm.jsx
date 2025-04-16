@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -29,13 +30,13 @@ const ContactForm = () => {
   
       const data = await res.json();
       if (res.ok) {
-        alert("Message sent successfully!");
+        toast.success("Message sent successfully!");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        alert("Failed to send message: " + data.message);
+        toast.success("Failed to send message: " + data.message);
       }
     } catch (error) {
-      alert("Error sending message: " + error.message);
+      toast.success("Error sending message: " + error.message);
     }
   };
   
