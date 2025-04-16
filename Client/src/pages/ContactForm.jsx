@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
