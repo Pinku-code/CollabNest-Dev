@@ -19,6 +19,8 @@ app.use('/api/auth', authRoutes);
 const geminiRoute = require("./routes/gemini");
 app.use("/api/gemini", geminiRoute);
 
+const contactRoutes = require("./routes/contactRoutes");
+app.use("/api", contactRoutes);
 
 
 const PORT = process.env.PORT || 5000;

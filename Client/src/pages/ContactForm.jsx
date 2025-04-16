@@ -15,14 +15,30 @@ const ContactForm = () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted sucsessfully:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-
-    setTimeout(() => setSubmitted(false), 3000);
+  
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await res.json();
+      if (res.ok) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        alert("Failed to send message: " + data.message);
+      }
+    } catch (error) {
+      alert("Error sending message: " + error.message);
+    }
   };
+  
    useEffect(() => {
           window.scrollTo(0, 0); // ⬆️ scroll to top on load
         }, []);
