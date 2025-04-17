@@ -1,6 +1,10 @@
-import Navbar_dashboard from "../components/Navbar_dashboard";
+const BASE_URL =
+import.meta.env.PROD
+  ? "https://collabnest-dev.onrender.com" // 🔁 production backend
+  : "http://localhost:5000";             // 🔁 local dev
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+
+
 
 export const API = {
   CONTACT: `${BASE_URL}/api/contact`,
