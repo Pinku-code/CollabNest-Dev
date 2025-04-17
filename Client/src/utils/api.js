@@ -1,7 +1,7 @@
 const BASE_URL =
-import.meta.env.PROD
-  ? "https://collabnest-dev.onrender.com" // 🔁 production backend
-  : "http://localhost:5000";             // 🔁 local dev
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000"
+    : "https://collabnest-dev.onrender.com";           // 🔁 local dev
 
 
 
