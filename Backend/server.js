@@ -19,7 +19,7 @@ app.use(express.json());
 // ✅ CORS config (combine instead of calling twice)
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://collab-nest-dev.vercel.app/"],
+    origin: ["http://localhost:5173", "https://collab-nest-dev.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
