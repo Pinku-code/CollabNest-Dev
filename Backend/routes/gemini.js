@@ -1,13 +1,20 @@
-// routes/gemini.js
 const express = require("express");
 const fetch = require("node-fetch");
 const router = express.Router();
 require("dotenv").config();
 
-
 router.post("/", async (req, res) => {
   const question = req.body.question;
   const apiKey = process.env.GEMINI_API_KEY;
+
+  if (!question) {
+    return res.status(400).json({ error: "❌ 'question' is required in request body." });
+  }
+
+  if (!apiKey) {
+    console.error("❌ GEMINI_API_KEY is missing from environment variables.");
+    return res.status(500).json({ error: "Server configuration error. API key missing." });
+  }
 
   const wantsPoints = /points|bullet|list|steps/i.test(question);
   const prompt = wantsPoints
@@ -32,13 +39,28 @@ router.post("/", async (req, res) => {
       body: JSON.stringify(requestBody),
     });
 
-    const data = await response.json();
-    const result = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from Gemini.";
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("❌ Gemini API Error:", response.status, errorText);
+      return res.status(500).json({
+        error: "Failed to fetch from Gemini API",
+        status: response.status,
+        message: errorText,
+      });
+    }
 
-    res.json({ response: result.replace(/^\*+/gm, "").trim() });
+    const data = await response.json();
+    const result = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+    if (!result) {
+      console.warn("⚠️ Gemini returned no result.");
+      return res.status(200).json({ response: "No meaningful response received." });
+    }
+
+    res.json({ response: result.trim().replace(/^\*+/gm, "") });
   } catch (error) {
-    console.error("Gemini Proxy Error:", error);
-    res.status(500).json({ error: "Failed to fetch from Gemini API" });
+    console.error("🚨 Gemini Proxy Error:", error);
+    res.status(500).json({ error: "Server error while contacting Gemini API." });
   }
 });
 
