@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
-import { API } from "../../src/utils/api";
+import { API } from "../utils/api";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",

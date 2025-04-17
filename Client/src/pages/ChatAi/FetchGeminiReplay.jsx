@@ -1,4 +1,5 @@
 import { API } from "../../utils/api";
+
 export const FetchGeminiReply = async (question) => {
   try {
     const res = await fetch(API.GEMINI, {
