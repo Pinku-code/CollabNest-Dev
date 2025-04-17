@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { API } from "../../src/utils/api";
+import { API } from "../utils/api";
 
 
 const Login = () => {

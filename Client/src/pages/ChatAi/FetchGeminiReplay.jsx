@@ -1,6 +1,5 @@
 import { API } from "../../utils/api";
 export const FetchGeminiReply = async (question) => {
-  
   try {
     const res = await fetch(API.GEMINI, {
       method: "POST",
@@ -20,4 +19,3 @@ export const FetchGeminiReply = async (question) => {
     return "❌ Failed to get response from backend.";
   }
 };
-

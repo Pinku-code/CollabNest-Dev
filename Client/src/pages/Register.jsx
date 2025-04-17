@@ -42,6 +42,7 @@ const Register = () => {
       const res = await axios.post(API.REGISTER, {
 
         // URL of render = https://collabnest-dev.onrender.com/api/auth/register
+        // URL of localhost = http://localhost:5000/api/auth/register
 
         fullName,
         email,
