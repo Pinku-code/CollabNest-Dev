@@ -19,6 +19,7 @@
 
 const Contact = require("../models/Contact");
 const nodemailer = require("nodemailer");
+require('dotenv').config();
 
 exports.submitContactForm = async (req, res) => {
   const { name, email, subject, message } = req.body;

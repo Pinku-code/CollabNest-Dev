@@ -4,6 +4,7 @@ const fetch = require("node-fetch");
 const router = express.Router();
 require("dotenv").config();
 
+
 router.post("/", async (req, res) => {
   const question = req.body.question;
   const apiKey = process.env.GEMINI_API_KEY;

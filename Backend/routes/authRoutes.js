@@ -4,6 +4,7 @@ const { register, login, logout } = require('../controllers/authController');
 const { submitContactForm } = require('../controllers/contactController');
 const protect = require('../middleware/authMiddleware');
 const User = require('../models/User');
+require('dotenv').config();
 
 // Public routes
 router.post('/register', register);
