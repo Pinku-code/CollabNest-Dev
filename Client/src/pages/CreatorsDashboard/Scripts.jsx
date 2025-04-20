@@ -41,7 +41,6 @@ const Scripts = () => {
         },
       });
       if (!res.data || res.data.length === 0) {
-        toast("No scripts found", { icon: "📭" });
         setScripts([]);
       } else {
         setScripts(res.data);
@@ -211,6 +210,9 @@ const Scripts = () => {
         <h2 className="text-xl font-semibold mt-6 mb-2">Your Scripts</h2>
         <div className="grid gap-4">
           {Array.isArray(scripts) &&
+          scripts.length === 0 ? (<div className="text-gray-500 text-center mt-4 text-lg">
+            <p>No scripts found 📭     Start by adding one above! ✍️</p>
+          </div>) : (
             scripts.map((script) => (
               <div key={script._id} className="border p-4 rounded shadow">
                 <h3 className="text-lg font-bold">{script.title}</h3>
@@ -284,7 +286,7 @@ const Scripts = () => {
                   </button>
                 </div>
               </div>
-            ))}
+            )))}
         </div>
       </div>
       <Footer />
