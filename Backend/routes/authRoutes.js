@@ -4,6 +4,8 @@ const { register, login, logout } = require('../controllers/authController');
 const { submitContactForm } = require('../controllers/contactController');
 const protect = require('../middleware/authMiddleware');
 const User = require('../models/User');
+const { resetPassword } = require("../controllers/authController");
+const { forgotPassword } = require("../controllers/authController");
 require('dotenv').config();
 
 // Public routes
@@ -11,6 +13,8 @@ router.post('/register', register);
 router.post('/login', login);
 router.post('/logout', logout);
 router.post('/contact', submitContactForm);
+router.post("/forgot-password", forgotPassword);
+router.post("/reset-password/:token", resetPassword);
 
 // 🔐 Protected Creator Dashboard Route
 // inside /routes/authRoutes.js

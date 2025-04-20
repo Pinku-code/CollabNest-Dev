@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from 'react';
-import Loader from './components/Loader';
+import { useState, useEffect } from "react";
+import Loader from "./components/Loader";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Docs from "./pages/Docs";
@@ -16,6 +16,8 @@ import Video_manager from "./pages/CreatorsDashboard/Video_manger";
 import ServicePage from "./pages/ServicePage";
 import AboutPage from "./pages/AboutPage";
 import ChatPage from "./pages/ChatAi/ChatPage";
+import ResetPassword from "./pages/ResetPassword";
+import ForgotPassword from "./pages/Forgotpassword";
 // import ChatAi from "./pages/ChatAi";
 
 function App() {
@@ -27,14 +29,9 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-
-
   if (loading) {
     return <Loader />;
   }
-
-
-  
   return (
     <div>
       <Router>
@@ -49,12 +46,14 @@ function App() {
           <Route path="/cr_dash/Scripts" element={<Scripts />} />
           <Route path="/cr_dash/Collabs" element={<Collabs />} />
           <Route path="/cr_dash/Video_manager" element={<Video_manager />} />
-          <Route path="/service" element={<ServicePage/>} />
-          <Route path="/about" element={<AboutPage/>}/>
-          <Route path="/aichat" element={<ChatPage/>}/>
+          <Route path="/service" element={<ServicePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/aichat" element={<ChatPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+
           {/* <Route path="/aichat2" element={<ChatAi/>}/> */}
           {/* <Route path="*" element={<Home />} /> */}
-
         </Routes>
       </Router>
       <Toaster
@@ -71,7 +70,6 @@ function App() {
         }}
       />
     </div>
-    
   );
 }
 

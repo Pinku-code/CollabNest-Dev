@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 });
 
 // ✅ Routes
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes); // ✅ Auth routes
 app.use('/api/gemini', geminiRoute);
 app.use('/api', contactRoutes);
 app.use('/api/scripts', scriptRoutes); // ✅ Script manager routes

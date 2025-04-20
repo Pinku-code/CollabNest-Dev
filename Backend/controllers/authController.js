@@ -1,7 +1,9 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const sendEmail = require("../utils/sendEmail");
 require('dotenv').config();
+
 const register = async (req, res) => {
   const { fullName, email, password } = req.body;
 
@@ -22,10 +24,7 @@ const register = async (req, res) => {
 { /* Login function to authenticate user and return JWT token */ }
 { /* This function checks if the user exists and if the password matches. If so, it generates a JWT token. */ }
 const login = async (req, res) => {
-
   const { email, password } = req.body;
-  
-
   try {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "Invalid credentials" });
@@ -54,4 +53,72 @@ const logout = async (req, res) => {
   res.status(200).json({ message: "Logout successful" });
 };
 
-module.exports = { register, login, logout };
+const resetPassword = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+
+  try {
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_RESET_SECRET);
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.password = hashedPassword;
+
+    await user.save();
+
+    res.status(200).json({ message: 'Password reset successful' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Invalid or expired token' });
+  }
+};
+
+const forgotPassword = async (req, res) => {
+  console.log("hit /forgot-password route")
+  const { email } = req.body;
+
+  try {
+    // Check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Generate reset token
+    const token = jwt.sign(
+      { id: user._id },
+      process.env.JWT_RESET_SECRET,
+      { expiresIn: "15m" }
+    );
+
+    // Generate reset link
+    const resetLink = `${process.env.CLIENT_URL}/reset-password/${token}`;
+
+    // Send email with reset link
+    await sendEmail({
+      to: email,
+      subject: "Reset Your Password",
+      html: `
+        <h3>Password Reset Request</h3>
+        <p>Click the link below to reset your password:</p>
+        <a href="${resetLink}" target="_blank">${resetLink}</a>
+        <p>This link is valid for 15 minutes.</p>
+      `,
+    });
+
+    res.status(200).json({ message: "Reset link sent to your email!" });
+
+
+  } catch (err) {
+    console.error("Forgot Password Error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+module.exports = { register, login, logout, resetPassword, forgotPassword };
