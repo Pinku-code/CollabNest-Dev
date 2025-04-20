@@ -41,11 +41,14 @@ const Scripts = () => {
         },
       });
       if (!res.data || res.data.length === 0) {
+        console.log("No scripts found");
         setScripts([]);
       } else {
         setScripts(res.data);
       }
     } catch (error) {
+      console.log("❌ Failed to fetch:", error || error.response?.data || error.message);
+
       toast.error("Failed to fetch scripts");
     }
   };
