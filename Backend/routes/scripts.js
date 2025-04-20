@@ -11,7 +11,6 @@ router.get('/', protect, async (req, res) => {
 
 // 🔐 Create a script for the logged-in user
 router.post('/', protect, async (req, res) => {
-    console.log('POST /api/scripts hit');
   const { title, content, category } = req.body;
 
   const script = new Script({
@@ -22,7 +21,6 @@ router.post('/', protect, async (req, res) => {
   });
 
   await script.save();
-  console.log('Script saved:', script);
   res.status(201).json(script);
 });
 
