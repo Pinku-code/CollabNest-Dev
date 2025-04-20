@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -11,4 +12,13 @@ export default defineConfig({
   daisyui: {
     themes: ["light", "dark"], // or add more custom themes
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
+  }
+  
 })

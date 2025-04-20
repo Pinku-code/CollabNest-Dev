@@ -2,9 +2,16 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
+
 const authRoutes = require('./routes/authRoutes');
 const geminiRoute = require("./routes/gemini");
 const contactRoutes = require("./routes/contactRoutes");
+const scriptRoutes = require('./routes/scripts'); // ✅ Import Script Manager routes
+// const AI = require("./routes/aiEnhance"); // ✅ Import AI routes
+const { gemini } = require('./utils/geminiClient'); // Adjust the path as necessary
+const AIEnhance = require('./routes/aiEnhance'); // Adjust the path as necessary
+
+
 
 dotenv.config(); // ✅ Load env variables early
 
@@ -16,7 +23,7 @@ connectDB();
 // ✅ Middlewares
 app.use(express.json());
 
-// ✅ CORS config (combine instead of calling twice)
+// ✅ CORS config
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://collab-nest-dev.vercel.app"],
@@ -25,8 +32,7 @@ app.use(
   })
 );
 
-
-// ✅ Basic test route
+// ✅ Test route
 app.get("/", (req, res) => {
   res.send("🌟 API is running...");
 });
@@ -35,6 +41,9 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/gemini', geminiRoute);
 app.use('/api', contactRoutes);
+app.use('/api/scripts', scriptRoutes); // ✅ Script manager routes
+app.use('/api/aiEnhance', AIEnhance); // ✅ AI routes
+// app.use('/api/aiEnhance', AI); // ✅ AI routes
 
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
