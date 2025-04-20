@@ -26,9 +26,12 @@ const Scripts = () => {
       toast.error("Please login first.");
       navigate("/login");
       return;
-    }
+    }else {
+      console.log("Token found, fetching scripts...");
     fetchScripts();
-  }, []);
+    }
+  }, [token, navigate]);
+  
 
   const fetchScripts = async () => {
     try {
@@ -37,7 +40,12 @@ const Scripts = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setScripts(res.data);
+      if (!res.data || res.data.length === 0) {
+        toast("No scripts found", { icon: "📭" });
+        setScripts([]);
+      } else {
+        setScripts(res.data);
+      }
     } catch (error) {
       toast.error("Failed to fetch scripts");
     }

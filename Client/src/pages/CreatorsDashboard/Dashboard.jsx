@@ -36,7 +36,7 @@ const CreatorsDashboard = () => {
       navigate("/login");
       return;
     }
-    console.log("Fetch Dashboard above");
+    
 
     const fetchDashboard = async () => {
       try {
