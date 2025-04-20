@@ -7,7 +7,7 @@ import Spinner from "../../components/Spinner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import axios from "axios";
-
+import {API} from "../../utils/api";
 const Scripts = () => {
   const [scripts, setScripts] = useState([]);
   const [form, setForm] = useState({ title: "", category: "", content: "" });
@@ -17,6 +17,11 @@ const Scripts = () => {
   const [isEnhancing, setIsEnhancing] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
   const [isUpdating, setIsUpdating] = useState(false);
+  
+
+ 
+
+
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -35,7 +40,7 @@ const Scripts = () => {
 
   const fetchScripts = async () => {
     try {
-      const res = await axios.get("/api/scripts", {
+      const res = await axios.get(API.SCRIPTS, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,7 +66,7 @@ const Scripts = () => {
     try {
       if (editingId) {
         setIsUpdating(true);
-        await axios.put(`/api/scripts/${editingId}`, form, {
+        await axios.put(API.SCRIPT_BY_ID(editingId), form, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -70,7 +75,7 @@ const Scripts = () => {
         setIsUpdating(false);
       } else {
         setIsSaving(true);
-        await axios.post("/api/scripts", form, {
+        await axios.post(API.SCRIPTS, form, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -101,7 +106,7 @@ const Scripts = () => {
   const handleDelete = async (id) => {
     setDeletingId(id);
     try {
-      await axios.delete(`/api/scripts/${id}`, {
+      await axios.delete(API.SCRIPT_BY_ID(id), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -123,7 +128,7 @@ const Scripts = () => {
     setIsEnhancing(true);
     try {
       const res = await axios.post(
-        "/api/aiEnhance",
+        API.AI_ENHANCE,
         { content: form.content },
         {
           headers: {
@@ -140,6 +145,7 @@ const Scripts = () => {
       setForm({ ...form, content: cleanedResponse });
       toast.success("Script enhanced with AI!");
     } catch (error) {
+      console.error("AI enhancement error:", error || error.response?.data || error.message);
       toast.error("AI enhancement failed");
     } finally {
       setIsEnhancing(false);
