@@ -204,13 +204,17 @@ const Register = () => {
 
       // Save backend token in localStorage or context
       localStorage.setItem("token", res.data.token);
-      toast.success("Logged in successfully!");
-      navigate("/cr_dash");
+      
     } catch (error) {
       toast.error("Google login failed");
       console.error(error);
     }finally {
-      setLoading(false); // Stop loading
+      setTimeout(() => {
+        setLoading(false);
+        toast.success("Logged in successfully!");
+      navigate("/cr_dash");
+        // navigate("/cr_dash");
+      }, 1000);
     }
   }}
   onError={() => {
