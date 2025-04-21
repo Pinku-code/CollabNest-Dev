@@ -190,6 +190,7 @@ const Register = () => {
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
     try {
+      setLoading(true); // Start loading
       const { credential } = credentialResponse;
 
       // Decode and show locally
@@ -208,6 +209,8 @@ const Register = () => {
     } catch (error) {
       toast.error("Google login failed");
       console.error(error);
+    }finally {
+      setLoading(false); // Stop loading
     }
   }}
   onError={() => {
