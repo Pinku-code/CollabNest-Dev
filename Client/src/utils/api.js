@@ -13,6 +13,7 @@ export const API = {
   SCRIPT_BY_ID: (id) => `${BASE_URL}/api/scripts/${id}`,
   FORGOT_PASSWORD: `${BASE_URL}/api/auth/forgot-password`,
   RESET_PASSWORD: `${BASE_URL}/api/auth/reset-password`,
+  GOOGLE_LOGIN: `${BASE_URL}/api/auth/google-login`,
 
 };
 

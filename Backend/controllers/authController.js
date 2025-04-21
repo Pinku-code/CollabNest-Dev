@@ -1,8 +1,56 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { OAuth2Client } = require("google-auth-library");
 const sendEmail = require("../utils/sendEmail");
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 require('dotenv').config();
+
+const googleLogin = async (req, res) => {
+  const { token } = req.body;
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+
+    const payload = ticket.getPayload();
+    const { email, name, sub: googleId, picture } = payload;
+
+    // Check if user exists
+    let user = await User.findOne({ email });
+
+    // If not, create one
+    if (!user) {
+      user = new User({
+        fullName: name,
+        email,
+        googleId,
+        provider: "google",
+        avatar: picture,
+      });
+      await user.save();
+    }
+
+    // Sign backend token
+    const backendToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    res.json({
+      token: backendToken,
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        avatar: user.avatar,
+      },
+    });
+  } catch (err) {
+    console.error("Google Login Error:", err || err.message || err.response?.data || err.response?.statusText);
+    res.status(401).json({ message: "Invalid Google token" });
+  }
+};
 
 const register = async (req, res) => {
   const { fullName, email, password } = req.body;
@@ -122,4 +170,4 @@ const forgotPassword = async (req, res) => {
   }
 };
 
-module.exports = { register, login, logout, resetPassword, forgotPassword };
+module.exports = { register, login, logout, resetPassword, forgotPassword, googleLogin };

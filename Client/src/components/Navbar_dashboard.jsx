@@ -37,6 +37,7 @@ const [creatorInfo, setCreatorInfo] = useState({
     name: "",
     email: "",
     niche: "",
+    profilePic:"",
   });
 const navigate = useNavigate();
 
@@ -48,7 +49,6 @@ useEffect(() => {
       return;
     }
 
-    console.log("Fetch Dashboard above");
 
     const fetchdata = async () => {
       try {
@@ -65,19 +65,12 @@ useEffect(() => {
         if (!res.ok) {
           throw new Error("Failed to fetch dashboard data");
         }
-
-        
-
         const data = await res.json();
-
         if (data.creatorInfo) {
           setCreatorInfo(data.creatorInfo);
         }
-
-
       } catch (error) {
         console.error(error);
-        toast.error("Error loading dashboard");
       }
     };
 
@@ -208,7 +201,7 @@ useEffect(() => {
   <div className="dropdown dropdown-end">
     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
       <div className="w-10 rounded-full">
-        <img src={avatar} alt="User avatar" />
+        <img src={creatorInfo.profilePic || "avatar"} alt="User avatar" />
       </div>
     </label>
     <ul

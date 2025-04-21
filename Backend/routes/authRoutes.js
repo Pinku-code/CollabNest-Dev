@@ -6,6 +6,9 @@ const protect = require('../middleware/authMiddleware');
 const User = require('../models/User');
 const { resetPassword } = require("../controllers/authController");
 const { forgotPassword } = require("../controllers/authController");
+const { googleLogin } = require("../controllers/authController");
+
+
 require('dotenv').config();
 
 // Public routes
@@ -15,6 +18,8 @@ router.post('/logout', logout);
 router.post('/contact', submitContactForm);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
+
+router.post("/google-login", googleLogin);
 
 // 🔐 Protected Creator Dashboard Route
 // inside /routes/authRoutes.js
@@ -29,6 +34,7 @@ router.get('/cr_dash', protect, async (req, res) => {
       creatorInfo: {
         name: user.fullName,
         email: user.email,
+        profilePic: user.avatar || "http://localhost:5000/public/assets/avatar.png",
         niche: user.niche || "Tech & Reviews"
       },
       dashboardStats: {

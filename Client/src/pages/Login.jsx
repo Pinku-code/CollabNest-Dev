@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { API } from "../utils/api";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -131,6 +133,35 @@ const Login = () => {
                 Sign up
               </Link>
             </p>
+
+            <GoogleLogin
+              onSuccess={async (credentialResponse) => {
+                try {
+                  const { credential } = credentialResponse;
+            
+                  // Decode and show locally
+                  const decoded = jwtDecode(credential);
+                  //console.log("Google user", decoded);
+            
+                  // Send credential (token) to backend
+                  const res = await axios.post(API.GOOGLE_LOGIN, {
+                    token: credential,
+                  });
+            
+                  // Save backend token in localStorage or context
+                  localStorage.setItem("token", res.data.token);
+                  toast.success("Logged in successfully!");
+                  navigate("/cr_dash");
+                } catch (error) {
+                  toast.error("Google login failed");
+                  console.error(error);
+                }
+              }}
+              onError={() => {
+                toast.error("Google Login Failed");
+              }}
+            />
+
           </div>
         </div>
       </div>

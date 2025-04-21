@@ -19,9 +19,15 @@ import ChatPage from "./pages/ChatAi/ChatPage";
 import ResetPassword from "./pages/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword";
 // import ChatAi from "./pages/ChatAi";
+// index.js or App.jsx
+
+
+
 
 function App() {
   const [loading, setLoading] = useState(true);
+
+  
 
   useEffect(() => {
     // Simulate API call
