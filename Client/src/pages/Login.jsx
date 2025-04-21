@@ -127,14 +127,16 @@ const Login = () => {
               </div>
             </form>
 
-            <div className="flex justify-around items-center gap-2.5 mt-1">
-            <p className="mt-1 text-center text-sm">
+            <div className="flex justify-center items-center gap-2 mt-1">
+              <div className="w-full ">
+            <p className="mt-1  text-sm text-center">
               Don't have an account?{" "}
               <Link to="/register" className="link link-primary">
                 Register here
               </Link>
             </p>
-            <div className="mt-1 text-center">
+            </div>
+            <div className="mt-1 text-center w-50 ">
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
     try {

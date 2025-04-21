@@ -169,14 +169,16 @@ const Register = () => {
             </form>
 
 
-            <div className="flex justify-around items-center gap-2.5 mt-1">
+            <div className="flex justify-around items-center gap-2 mt-1">
+              <div className="w-full">
             <p className="mt-1 text-center text-sm">
               Already have an account?{" "}
               <Link to="/login" className="link link-primary">
                 Login here
               </Link>
             </p>
-            <div className="mt-1 text-center">
+            </div>
+            <div className="mt-1 text-center w-50">
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
     try {
