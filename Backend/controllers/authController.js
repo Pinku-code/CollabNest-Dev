@@ -101,6 +101,7 @@ const forgotPassword = async (req, res) => {
     const resetLink = `${process.env.CLIENT_URL}/reset-password/${token}`;
 
     // Send email with reset link
+    // Send email using your email service
     await sendEmail({
       to: email,
       subject: "Reset Your Password",
