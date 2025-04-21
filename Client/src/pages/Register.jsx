@@ -181,10 +181,10 @@ const Register = () => {
             </p>
             </div>
             {loading ? (
-              // <div className="mt-4 flex justify-center">
-              // <span className="loading loading-spinner text-primary"></span> {/* Tailwind spinner */}
-              <Loader loading = {loading} />
-            // </div>
+              <div className="mt-4 flex justify-center">
+              <span className="loading loading-spinner text-primary"></span> {/* Tailwind spinner */}
+              
+            </div>
             ) : (
             <div className="mt-1 text-center w-50">
             <GoogleLogin
