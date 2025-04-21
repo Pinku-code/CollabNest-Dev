@@ -17,7 +17,7 @@ import ServicePage from "./pages/ServicePage";
 import AboutPage from "./pages/AboutPage";
 import ChatPage from "./pages/ChatAi/ChatPage";
 import ResetPassword from "./pages/ResetPassword";
-import ForgotPassword from "./pages/Forgotpassword";
+import ForgotPassword from "./pages/ForgotPassword";
 // import ChatAi from "./pages/ChatAi";
 
 function App() {
