@@ -7,6 +7,8 @@ import { toast } from "react-hot-toast";
 import { API } from "../utils/api";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+// import { Loader } from "../components/Loader";
+import Loader from "../components/Loader";
 
 
 
@@ -178,7 +180,13 @@ const Register = () => {
               </Link>
             </p>
             </div>
-            
+            {loading ? (
+              // <div className="mt-4 flex justify-center">
+              // <span className="loading loading-spinner text-primary"></span> {/* Tailwind spinner */}
+              <Loader loading = {loading} />
+            // </div>
+            ) : (
+            <div className="mt-1 text-center w-50">
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
     try {
@@ -206,6 +214,8 @@ const Register = () => {
     toast.error("Google Login Failed");
   }}
 />
+</div>
+)}
 </div>
 
           </div>

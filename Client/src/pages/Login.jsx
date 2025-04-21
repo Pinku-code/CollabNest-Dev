@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { API } from "../utils/api";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+import Loader from "../components/Loader";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -136,9 +137,16 @@ const Login = () => {
               </Link>
             </p>
             </div>
-            
+            {loading ? (
+            //   <div className="mt-4 flex justify-center">
+            //   <span className="loading loading-spinner text-primary"></span> {/* Tailwind spinner */}
+            // </div>
+            <Loader loading={loading} /> // Custom loader component
+            ) : (
+            <div className="mt-1 text-center w-50 ">
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
+    setLoading(true); // start loader
     try {
       const { credential } = credentialResponse;
 
@@ -158,12 +166,16 @@ const Login = () => {
     } catch (error) {
       toast.error("Google login failed");
       console.error(error);
+    }finally {
+      setLoading(false); // stop loader
     }
   }}
   onError={() => {
     toast.error("Google Login Failed");
   }}
 />
+</div>
+)}
 </div>
 
           </div>
