@@ -191,6 +191,7 @@ const Register = () => {
               height: "50px",
               overflow: "hidden",
               position: "relative",
+              borderRadius: "8px",
             }}>
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
