@@ -143,7 +143,12 @@ const Login = () => {
             </div>
             
             ) : (
-            <div className="mt-1 text-center w-50 ">
+            <div className="mt-1 text-center" style={{
+              width: "400px",
+              height: "50px",
+              overflow: "hidden",
+              position: "relative",
+            }}>
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
     setLoading(true); // start loader
