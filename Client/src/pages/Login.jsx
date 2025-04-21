@@ -127,40 +127,43 @@ const Login = () => {
               </div>
             </form>
 
-            <p className="mt-4 text-center text-sm">
+            <div className="flex justify-around items-center gap-2.5 mt-1">
+            <p className="mt-1 text-center text-sm">
               Don't have an account?{" "}
               <Link to="/register" className="link link-primary">
-                Sign up
+                Register here
               </Link>
             </p>
-
+            <div className="mt-1 text-center">
             <GoogleLogin
-              onSuccess={async (credentialResponse) => {
-                try {
-                  const { credential } = credentialResponse;
-            
-                  // Decode and show locally
-                  const decoded = jwtDecode(credential);
-                  //console.log("Google user", decoded);
-            
-                  // Send credential (token) to backend
-                  const res = await axios.post(API.GOOGLE_LOGIN, {
-                    token: credential,
-                  });
-            
-                  // Save backend token in localStorage or context
-                  localStorage.setItem("token", res.data.token);
-                  toast.success("Logged in successfully!");
-                  navigate("/cr_dash");
-                } catch (error) {
-                  toast.error("Google login failed");
-                  console.error(error);
-                }
-              }}
-              onError={() => {
-                toast.error("Google Login Failed");
-              }}
-            />
+  onSuccess={async (credentialResponse) => {
+    try {
+      const { credential } = credentialResponse;
+
+      // Decode and show locally
+      const decoded = jwtDecode(credential);
+      //console.log("Google user", decoded);
+
+      // Send credential (token) to backend
+      const res = await axios.post(API.GOOGLE_LOGIN, {
+        token: credential,
+      });
+
+      // Save backend token in localStorage or context
+      localStorage.setItem("token", res.data.token);
+      toast.success("Logged in successfully!");
+      navigate("/cr_dash");
+    } catch (error) {
+      toast.error("Google login failed");
+      console.error(error);
+    }
+  }}
+  onError={() => {
+    toast.error("Google Login Failed");
+  }}
+/>
+</div>
+</div>
 
           </div>
         </div>
