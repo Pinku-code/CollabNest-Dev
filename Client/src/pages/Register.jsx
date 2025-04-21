@@ -178,7 +178,7 @@ const Register = () => {
               </Link>
             </p>
             </div>
-            <div className="mt-1 text-center w-50">
+            
             <GoogleLogin
   onSuccess={async (credentialResponse) => {
     try {
@@ -206,7 +206,6 @@ const Register = () => {
     toast.error("Google Login Failed");
   }}
 />
-</div>
 </div>
 
           </div>
