@@ -127,7 +127,7 @@ const Login = () => {
               </div>
             </form>
 
-            <div className="flex justify-center items-center gap-2 mt-1">
+            <div className="flex justify-center items-center gap-2 mt-1 w-full max-w-sm">
               <div className="w-full ">
             <p className="mt-1  text-sm text-center">
               Don't have an account?{" "}

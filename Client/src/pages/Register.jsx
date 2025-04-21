@@ -169,7 +169,7 @@ const Register = () => {
             </form>
 
 
-            <div className="flex justify-around items-center gap-2 mt-1">
+            <div className="flex justify-around items-center gap-2 mt-1 w-full max-w-sm">
               <div className="w-full">
             <p className="mt-1 text-center text-sm">
               Already have an account?{" "}
