@@ -135,8 +135,9 @@ const Login = () => {
               </div>
             ) : (
               <div
-                className="mt-1 text-center w-full"
+                className="mt-1 text-center "
                 style={{
+                  width: "335px",
                   height: "50px",
                   overflow: "hidden",
                   position: "relative",

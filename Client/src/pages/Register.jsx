@@ -176,8 +176,9 @@ const Register = () => {
               </div>
             ) : (
               <div
-                className="mt-1 text-center w-full"
+                className="mt-1 text-center"
                 style={{
+                  width:"340px",
                   height: "50px",
                   overflow: "hidden",
                   position: "relative",
