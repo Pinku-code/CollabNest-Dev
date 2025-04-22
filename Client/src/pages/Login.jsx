@@ -128,66 +128,65 @@ const Login = () => {
               </div>
             </form>
 
-            <div className="flex justify-center items-center gap-2 mt-1 w-full max-w-sm">
-              <div className="w-full ">
-            <p className="mt-1  text-sm text-center">
-              Don't have an account?{" "}
-              <Link to="/register" className="link link-primary">
-                Register here
-              </Link>
-            </p>
-            </div>
             {loading ? (
               <div className="mt-4 flex justify-center">
-              <span className="loading loading-spinner text-primary"></span> {/* Tailwind spinner */}
-            </div>
-            
+                <span className="loading loading-spinner text-primary"></span>{" "}
+                {/* Tailwind spinner */}
+              </div>
             ) : (
-            <div className="mt-1 text-center" style={{
-              width: "400px",
-              height: "50px",
-              overflow: "hidden",
-              position: "relative",
-              borderRadius: "8px",
-            }}>
-            <GoogleLogin
-  onSuccess={async (credentialResponse) => {
-    setLoading(true); // start loader
-    try {
-      const { credential } = credentialResponse;
+              <div
+                className="mt-1 text-center w-full"
+                style={{
+                  height: "50px",
+                  overflow: "hidden",
+                  position: "relative",
+                  borderRadius: "8px",
+                }}
+              >
+                <GoogleLogin
+                  onSuccess={async (credentialResponse) => {
+                    setLoading(true); // start loader
+                    try {
+                      const { credential } = credentialResponse;
 
-      // Decode and show locally
-      const decoded = jwtDecode(credential);
-      //console.log("Google user", decoded);
+                      // Decode and show locally
+                      const decoded = jwtDecode(credential);
+                      //console.log("Google user", decoded);
 
-      // Send credential (token) to backend
-      const res = await axios.post(API.GOOGLE_LOGIN, {
-        token: credential,
-      });
+                      // Send credential (token) to backend
+                      const res = await axios.post(API.GOOGLE_LOGIN, {
+                        token: credential,
+                      });
 
-      // Save backend token in localStorage or context
-      localStorage.setItem("token", res.data.token);
-      
-    } catch (error) {
-      toast.error("Google login failed");
-      console.error(error);
-    }finally {
-      setTimeout(() => {
-        setLoading(false);
-        toast.success("Logged in successfully!");
-      navigate("/cr_dash");
-        // navigate("/cr_dash");
-      }, 1000);
-    }
-  }}
-  onError={() => {
-    toast.error("Google Login Failed");
-  }}
-/>
-</div>
-)}
-</div>
+                      // Save backend token in localStorage or context
+                      localStorage.setItem("token", res.data.token);
+                    } catch (error) {
+                      toast.error("Google login failed");
+                      console.error(error);
+                    } finally {
+                      setTimeout(() => {
+                        setLoading(false);
+                        toast.success("Logged in successfully!");
+                        navigate("/cr_dash");
+                        // navigate("/cr_dash");
+                      }, 1000);
+                    }
+                  }}
+                  onError={() => {
+                    toast.error("Google Login Failed");
+                  }}
+                />
+              </div>
+            )}
 
+            <div className="w-full ">
+              <p className="mt-1  text-sm text-center">
+                Don't have an account?{" "}
+                <Link to="/register" className="link link-primary">
+                  Register here
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>

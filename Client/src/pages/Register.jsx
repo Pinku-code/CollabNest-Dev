@@ -10,8 +10,6 @@ import { jwtDecode } from "jwt-decode";
 // import { Loader } from "../components/Loader";
 import Loader from "../components/Loader";
 
-
-
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -46,7 +44,6 @@ const Register = () => {
 
     try {
       const res = await axios.post(API.REGISTER, {
-
         // URL of render = https://collabnest-dev.onrender.com/api/auth/register
         // URL of localhost = http://localhost:5000/api/auth/register
 
@@ -59,7 +56,7 @@ const Register = () => {
       navigate("/login");
     } catch (err) {
       toast.error(err.response?.data?.message || "Registration failed.");
-    }finally{
+    } finally {
       setLoading(false); // stop loader
     }
   };
@@ -70,7 +67,9 @@ const Register = () => {
       <div className="min-h-screen flex items-center justify-center bg-base-200">
         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
-            <h2 className="text-2xl font-bold text-center">Create an Account 📝</h2>
+            <h2 className="text-2xl font-bold text-center">
+              Create an Account 📝
+            </h2>
 
             <form onSubmit={handleSubmit}>
               <div className="form-control mt-4">
@@ -149,88 +148,86 @@ const Register = () => {
               </div>
 
               <div className="form-control mt-6">
-              {loading ? (
-                      <button
-                        type="button"
-                        disabled
-                        className="btn btn-primary w-full flex justify-center items-center gap-2"
-                      >
-                        Registering
-                        <span className="flex gap-1">
-                          <span className="dot">.</span>
-                          <span className="dot">.</span>
-                          <span className="dot">.</span>
-                        </span>
-                      </button>
-                    ) : (
-                      <button type="submit" className="btn btn-primary w-full">
-                        Register
-                      </button>
-                    )}
+                {loading ? (
+                  <button
+                    type="button"
+                    disabled
+                    className="btn btn-primary w-full flex justify-center items-center gap-2"
+                  >
+                    Registering
+                    <span className="flex gap-1">
+                      <span className="dot">.</span>
+                      <span className="dot">.</span>
+                      <span className="dot">.</span>
+                    </span>
+                  </button>
+                ) : (
+                  <button type="submit" className="btn btn-primary w-full">
+                    Register
+                  </button>
+                )}
               </div>
             </form>
 
-
-            <div className="flex justify-around items-center gap-2 mt-1 w-full max-w-sm">
-              <div className="w-full">
-            <p className="mt-1 text-center text-sm">
-              Already have an account?{" "}
-              <Link to="/login" className="link link-primary">
-                Login here
-              </Link>
-            </p>
-            </div>
             {loading ? (
               <div className="mt-4 flex justify-center">
-              <span className="loading loading-spinner text-primary"></span> {/* Tailwind spinner */}
-              
-            </div>
+                <span className="loading loading-spinner text-primary"></span>{" "}
+                {/* Tailwind spinner */}
+              </div>
             ) : (
-            <div className="mt-1 text-center" style={{
-              width: "350px",
-              height: "50px",
-              overflow: "hidden",
-              position: "relative",
-              borderRadius: "8px",
-            }}>
-            <GoogleLogin
-  onSuccess={async (credentialResponse) => {
-    try {
-      setLoading(true); // Start loading
-      const { credential } = credentialResponse;
+              <div
+                className="mt-1 text-center w-full"
+                style={{
+                  height: "50px",
+                  overflow: "hidden",
+                  position: "relative",
+                  borderRadius: "8px",
+                }}
+              >
+                <GoogleLogin
+                  onSuccess={async (credentialResponse) => {
+                    try {
+                      setLoading(true); // Start loading
+                      const { credential } = credentialResponse;
 
-      // Decode and show locally
-      const decoded = jwtDecode(credential);
-      //console.log("Google user", decoded);
+                      // Decode and show locally
+                      const decoded = jwtDecode(credential);
+                      //console.log("Google user", decoded);
 
-      // Send credential (token) to backend
-      const res = await axios.post(API.GOOGLE_LOGIN, {
-        token: credential,
-      });
+                      // Send credential (token) to backend
+                      const res = await axios.post(API.GOOGLE_LOGIN, {
+                        token: credential,
+                      });
 
-      // Save backend token in localStorage or context
-      localStorage.setItem("token", res.data.token);
-      
-    } catch (error) {
-      toast.error("Google login failed");
-      console.error(error);
-    }finally {
-      setTimeout(() => {
-        setLoading(false);
-        toast.success("Logged in successfully!");
-      navigate("/cr_dash");
-        // navigate("/cr_dash");
-      }, 1000);
-    }
-  }}
-  onError={() => {
-    toast.error("Google Login Failed");
-  }}
-/>
-</div>
-)}
-</div>
+                      // Save backend token in localStorage or context
+                      localStorage.setItem("token", res.data.token);
+                    } catch (error) {
+                      toast.error("Google login failed");
+                      console.error(error);
+                    } finally {
+                      setTimeout(() => {
+                        setLoading(false);
+                        toast.success("Logged in successfully!");
+                        navigate("/cr_dash");
+                        // navigate("/cr_dash");
+                      }, 1000);
+                    }
+                  }}
+                  onError={() => {
+                    toast.error("Google Login Failed");
+                  }}
+                />
+              </div>
+            )}
 
+            <div className="w-full">
+              <p className=" text-center text-sm">
+                Already have an account?{" "}
+                <Link to="/login" className="link link-primary">
+                  Login here
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
