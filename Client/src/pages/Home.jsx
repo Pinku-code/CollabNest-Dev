@@ -36,7 +36,7 @@ const Home = () => {
   },[]); // Empty dependency array ensures this effect runs only once when the page loads
 
   return (
-    <>
+    <div className="bg-base-100">
       <Navbar />
 
       <section className="bg-base-100 text-base-content py-20 px-6 mt-10 lg:px-20 mb-2">
@@ -227,7 +227,7 @@ const Home = () => {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 };
 

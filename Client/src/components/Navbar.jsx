@@ -27,7 +27,7 @@ const Navbar = () => {
   >
     {/* Navbar content */}
   
-    <div className="navbar fixed top-4 left-1/2 -translate-x-1/2 z-10 bg-base-100 shadow-lg px-4 py-2 rounded-full max-w-7xl w-full">
+    <div className="navbar fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-base-100 shadow-lg px-4 py-2 rounded-full max-w-7xl w-full">
       {/* Start */}
       <div className="navbar-start">
         <div className="dropdown lg:hidden">
