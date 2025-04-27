@@ -26,7 +26,7 @@ app.use(express.json());
 // ✅ CORS config
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://job-tracker-tx9v.onrender.com"],
+    origin: ["http://localhost:5173", "https://collab-nest-dev.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
