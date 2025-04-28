@@ -167,6 +167,7 @@ const Register = () => {
                   </button>
                 )}
               </div>
+              
             </form>
 
             {loading ? (
