@@ -179,7 +179,7 @@ const Register = () => {
               <div
                 className="mt-1 text-center"
                 style={{
-                  width:"300px",
+                  width:"340px",
                   height: "50px",
                   overflow: "hidden",
                   position: "relative",
@@ -211,7 +211,6 @@ const Register = () => {
                         setLoading(false);
                         toast.success("Logged in successfully!");
                         navigate("/cr_dash");
-                        // navigate("/cr_dash");
                       }, 1000);
                     }
                   }}

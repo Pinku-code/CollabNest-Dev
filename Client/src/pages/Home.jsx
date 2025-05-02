@@ -70,26 +70,10 @@ const Home = () => {
                   />
                   <div className="drawer-content">
                     <label
-                      htmlFor="my-drawer-4"
                       className="drawer-button btn btn-primary"
                     >
-                      🚀 Get Started for Free
+                      <Link to="/register">🚀 Get Started for Free</Link>
                     </label>
-                  </div>
-                  <div className="drawer-side">
-                    <label
-                      htmlFor="my-drawer-4"
-                      aria-label="close sidebar"
-                      className="drawer-overlay"
-                    ></label>
-                    <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-                      <li>
-                        <a>As a Creator</a>
-                      </li>
-                      <li>
-                        <a>As a Sponsor</a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
