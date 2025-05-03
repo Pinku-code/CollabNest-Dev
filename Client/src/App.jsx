@@ -18,6 +18,7 @@ import AboutPage from "./pages/AboutPage";
 import ChatPage from "./pages/ChatAi/ChatPage";
 import ResetPassword from "./pages/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword";
+import Profile from "./pages/CreatorsDashboard/Profile";
 // import ChatAi from "./pages/ChatAi";
 // index.js or App.jsx
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/cr_dash" element={<Dashboard />} />
           <Route path="/cr_dash/Scripts" element={<Scripts />} />
           <Route path="/cr_dash/Collabs" element={<Collabs />} />
+          <Route path="/cr_dash/Profile" element={<Profile />} />
           <Route path="/cr_dash/Video_manager" element={<Video_manager />} />
           <Route path="/service" element={<ServicePage />} />
           <Route path="/about" element={<AboutPage />} />

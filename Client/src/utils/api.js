@@ -16,6 +16,7 @@ export const API = {
   GOOGLE_LOGIN: `${BASE_URL}/api/auth/google-login`,
   VIDEO: `${BASE_URL}/api/videos`,
   COLLAB: `${BASE_URL}/api/collabs`,
+  PROFILE_ME: `${BASE_URL}/api/profile`,
 
 };
 

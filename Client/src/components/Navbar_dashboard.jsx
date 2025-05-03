@@ -212,7 +212,7 @@ useEffect(() => {
         <span className="font-semibold">👋 Hello, {creatorInfo.name.split(" ")[0]}</span>
       </li>
       <li>
-        <Link to="/profile">Profile</Link>
+        <Link to="/cr_dash/Profile">Profile</Link>
       </li>
       <li>
         <button

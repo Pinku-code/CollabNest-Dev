@@ -12,7 +12,7 @@ const { gemini } = require('./utils/geminiClient'); // Adjust the path as necess
 const AIEnhance = require('./routes/aiEnhance'); // Adjust the path as necessary
 const collabRoutes = require('./routes/collabRoutes');
 const videoRoutes = require('./routes/videoRoutes');
-
+const profileRoutes = require('./routes/profileRoutes');
 
 
 dotenv.config(); // ✅ Load env variables early
@@ -47,6 +47,7 @@ app.use('/api/scripts', scriptRoutes); // ✅ Script manager routes
 app.use('/api/aiEnhance', AIEnhance); // ✅ AI routes
 app.use("/api/collabs", collabRoutes);// ✅ Collab routes
 app.use("/api/videos", videoRoutes); // ✅ Video routes
+app.use('/api/profile', profileRoutes);// ✅ Profile routes
 // app.use('/api/aiEnhance', AI); // ✅ AI routes
 
 // ✅ Start server
