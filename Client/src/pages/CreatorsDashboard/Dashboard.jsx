@@ -233,9 +233,9 @@ const CreatorsDashboard = () => {
         {/* Recent Activity */}
         <div className="bg-base-100 p-5 rounded-xl shadow-md">
           <h3 className="text-xl font-semibold mb-4">Recent Activity</h3>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
+          <ul className="list-disc list-inside space-y-2 ">
             {recentActivities?.length === 0 ? (
-              <li className="text-sm text-gray-500">No recent activities.</li>
+              <li className="text-sm ">No recent activities.</li>
             ) : (
               recentActivities.map((item, index) => (
                 <li key={index}>🟢 {item}</li>

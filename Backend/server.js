@@ -10,6 +10,8 @@ const scriptRoutes = require('./routes/scripts'); // ✅ Import Script Manager r
 // const AI = require("./routes/aiEnhance"); // ✅ Import AI routes
 const { gemini } = require('./utils/geminiClient'); // Adjust the path as necessary
 const AIEnhance = require('./routes/aiEnhance'); // Adjust the path as necessary
+const collabRoutes = require('./routes/collabRoutes');
+const videoRoutes = require('./routes/videoRoutes');
 
 
 
@@ -43,6 +45,8 @@ app.use('/api/gemini', geminiRoute);
 app.use('/api', contactRoutes);
 app.use('/api/scripts', scriptRoutes); // ✅ Script manager routes
 app.use('/api/aiEnhance', AIEnhance); // ✅ AI routes
+app.use("/api/collabs", collabRoutes);// ✅ Collab routes
+app.use("/api/videos", videoRoutes); // ✅ Video routes
 // app.use('/api/aiEnhance', AI); // ✅ AI routes
 
 // ✅ Start server
