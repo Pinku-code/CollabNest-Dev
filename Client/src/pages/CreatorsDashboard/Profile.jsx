@@ -27,13 +27,13 @@ const Profile = () => {
   return (
     <div className="bg-base-100 mt-20 min-h-screen">
       <DashNavbar />
-      <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
 
         {/* Header Info */}
-        <div className="card lg:card-side bg-base-200 shadow-xl">
+        <div className="card  bg-base-200 shadow-xl">
           <figure>
             <img
-              className="w-40 h-40 object-cover rounded-full m-4"
+              className="w-30 h-30 object-cover rounded-full m-4"
               src={profile.avatar || 'https://placehold.co/150x150'}
               alt="Avatar"
             />
