@@ -74,7 +74,7 @@ const Profile = () => {
   }, []);
 
   if (!profile)
-    return <div className="bg-base-200 text-center mt-10">Loading profile...</div>;
+    return <div className="text-center mt-10">Loading profile...</div>;
 
   return (
     <div className="bg-base-100 mt-20 min-h-screen">
@@ -168,7 +168,7 @@ const Profile = () => {
                         <button
                         type="button"
                         disabled
-                        className="btn btn-primary w-full flex justify-center items-center gap-2"
+                        className="btn btn-primary"
                       >
                         Saving...
                       </button>
