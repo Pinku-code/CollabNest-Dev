@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
   earnings: { type: String, default: "₹0.00" },
 
   // 🧠 Profile info
-  handle: { type: String, unique: true, sparse: true,default:"YouTube" },
+  handle: { type: String, unique: true, sparse: true },
   bio: { type: String, default: "" },
   engagementRate: { type: Number, default: 0 }, // % (calculated via analytics later)
   niches: {
