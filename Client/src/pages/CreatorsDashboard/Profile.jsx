@@ -117,8 +117,8 @@ const Profile = () => {
             </div>
 
             {editOpen && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                <div className="bg-white dark:bg-base-100 p-6 rounded-xl shadow-lg w-full max-w-lg relative">
+              <div className="fixed inset-0 bg-base-200 bg-opacity-50 flex justify-center items-center z-50">
+                <div className="bg-base-100 dark:bg-base-100 p-6 rounded-xl shadow-lg w-full max-w-lg relative">
                   <h3 className="text-xl font-semibold mb-4">Edit Profile</h3>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <input
