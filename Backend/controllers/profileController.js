@@ -24,26 +24,34 @@ const getProfile = async (req, res) => {
 
 // PUT /api/profile/me
 const updateProfile = async (req, res) => {
-  try {
-    const updateFields = {
-      fullName: req.body.fullName,
-      bio: req.body.bio,
-      handle: req.body.handle,
-      niches: req.body.niches,
-      mediaKitUrl: req.body.mediaKitUrl,
-      avatar: req.body.avatar,
-    };
-
-    const updatedUser = await User.findByIdAndUpdate(
-      req.user.id,
-      { $set: updateFields },
-      { new: true, runValidators: true }
-    ).select('-password');
-
-    res.json(updatedUser);
-  } catch (err) {
-    res.status(500).json({ message: 'Server error' });
-  }
-};
+    // console.log("Api HIT ipdateProfile...");
+    try {
+      const allowedFields = ['fullName', 'bio', 'handle', 'niches', 'mediaKitUrl', 'avatar'];
+      const updateFields = {};
+  
+      allowedFields.forEach((field) => {
+        if (req.body[field] !== undefined) {
+          if (field === 'niches' && typeof req.body[field] === 'string') {
+            // Convert comma-separated string to array
+            updateFields[field] = req.body[field].split(',').map(n => n.trim());
+          } else {
+            updateFields[field] = req.body[field];
+          }
+        }
+      });
+//   console.log(User.data);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.user.userId,
+        { $set: updateFields },
+        { new: true, runValidators: true }
+      ).select('-password');
+    //   console.log(updatedUser);
+      res.json(updatedUser);
+    } catch (err) {
+      console.error('Update Profile Error:', err);
+      res.status(500).json({ message: 'Server error' });
+    }
+  };
+  
 
 module.exports = { getProfile, updateProfile };
