@@ -35,9 +35,11 @@ app.use(
 );
 
 // ✅ Test route
-app.get("/", (req, res) => {
-  res.send("🌟 API is running...");
+// In your Express server file
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
 });
+
 
 // ✅ Routes
 app.use('/api/auth', authRoutes); // ✅ Auth routes
